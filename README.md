@@ -13,7 +13,7 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 * Add .pre-commit-config.yaml used by [pre-commit](http://pre-commit.com/)
 * Add .gitignore with common files I don't want to track in git
 * Add the default configuration file for [Molecule](http://molecule.readthedocs.io) in the "molecule" folder
-  * The molecule config will include two scenarios (default scenario uses Vagrant, docker scenario uses docker)
+  * The molecule config will include two scenarios (default scenario uses Vagrant + centos7, second scenario docker + centos/systemd image)
   * The default scenario (Vagrant) will test CentOS7
   * The molecule playbooks are configured to run as root in the test instances
   * molecule runs [testinfra](https://testinfra.readthedocs.io) in verbose mode
@@ -24,4 +24,8 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 ```
 $ pip install cookiecutter
 $ cookiecutter gh:pescobar/cookiecutter-ansible-playbook-molecule
+```
+
+```
+$ molecule init template --url https://github.com/pescobar/cookiecutter-ansible-playbook-molecule
 ```
