@@ -1,0 +1,14 @@
+---
+
+- name: {{cookiecutter.playbook_name}}
+  hosts: "{{'{{'}} hostsvar | default('all') {{'}}'}}"
+  gather_facts: true
+  remote_user: root
+
+  tasks:
+
+  - name: just a test task
+    debug:
+      var: "{{'{{'}} ansible_hostname {{'}}'}}"
+
+# vim: tabstop=2 shiftwidth=2

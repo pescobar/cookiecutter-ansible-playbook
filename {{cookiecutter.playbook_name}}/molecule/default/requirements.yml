@@ -1,0 +1,16 @@
+---
+
+# define here all the role requirements for this playbook
+# you can download them doing:
+# ansible-galaxy install -r requirements.yml -p ./roles/
+
+# this is an example from github
+- src: https://github.com/chusiang/helloworld.ansible.role.git
+  scm: git
+  version: master
+  name: ansible-role-helloworld
+
+# this is an example from ansible galaxy
+# - src: geerlingguy.apache
+  # version: master
+  # name: ansible-role-geerlingguy-apache
