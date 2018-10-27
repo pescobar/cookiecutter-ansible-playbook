@@ -41,3 +41,37 @@ $ molecule test
 ```
 $ molecule test -s docker
 ```
+
+## Files layout
+```
+$ tree ansible-playbook-test
+ansible-playbook-test
+├── ansible-playbook-test.yml
+├── group_vars
+│   └── all
+├── host_vars
+│   └── example_host
+├── molecule
+│   ├── default
+│   │   ├── create.yml
+│   │   ├── destroy.yml
+│   │   ├── INSTALL.rst
+│   │   ├── molecule.yml
+│   │   ├── playbook.yml
+│   │   ├── prepare.yml
+│   │   └── requirements.yml
+│   ├── docker
+│   │   ├── create.yml
+│   │   ├── destroy.yml
+│   │   ├── Dockerfile.j2
+│   │   ├── INSTALL.rst
+│   │   ├── molecule.yml
+│   │   ├── playbook.yml
+│   │   └── prepare.yml
+│   └── tests
+│       └── test_default.py
+├── README.md
+└── requirements.yml -> molecule/default/requirements.yml
+
+6 directories, 20 files
+```
