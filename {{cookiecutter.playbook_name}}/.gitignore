@@ -4,3 +4,4 @@ __pycache__
 .molecule
 .cache
 *pytestdebug.log
+roles/
