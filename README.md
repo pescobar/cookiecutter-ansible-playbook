@@ -27,6 +27,7 @@ $ pip install cookiecutter
 $ cookiecutter gh:pescobar/cookiecutter-ansible-playbook-molecule
 ```
 
+<<<<<<< HEAD
 ### To initialize the playbook with molecule
 
 ```
@@ -42,3 +43,8 @@ $ molecule test
 ```
 $ molecule test -s docker
 ```
+=======
+```
+$ molecule init template --url https://github.com/pescobar/cookiecutter-ansible-playbook-molecule
+```
+>>>>>>> d7bfe718e2cd7c0cfd9be45a407cd014652a2ac6
