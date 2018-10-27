@@ -15,7 +15,6 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 * Add configuration for [Molecule](http://molecule.readthedocs.io) in the "molecule" folder
   * default molecule scenario uses Vagrant + centos7 (2GB ram)
   * second molecule scenario docker + centos/systemd image
-  * The molecule playbooks are configured to run as root in the test instances
   * molecule runs [testinfra](https://testinfra.readthedocs.io) in verbose mode
 * And probably something else that I forget... :)
 
