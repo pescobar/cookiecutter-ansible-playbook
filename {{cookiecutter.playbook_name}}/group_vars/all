@@ -1,4 +1,0 @@
----
-
-# these are the variables which apply to every host in this playbook e.g.
-# ntp_server: default-time.example.com

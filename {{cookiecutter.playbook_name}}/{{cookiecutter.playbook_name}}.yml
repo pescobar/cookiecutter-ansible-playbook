@@ -1,14 +1,84 @@
 ---
 
 - name: {{cookiecutter.playbook_name}}
-  hosts: "{{'{{'}} hostsvar | default('all') {{'}}'}}"
+  hosts: all
   gather_facts: true
-  remote_user: root
+  remote_user: centos
+  become: true
+
 
   tasks:
 
-  - name: just a test task
-    debug:
-      var: "{{'{{'}} ansible_hostname {{'}}'}}"
+    - name: Prepare the machine to be managed with ansible
+      import_role:
+        name: robertdebock.bootstrap
+
+    - name: Install core deps
+      import_role:
+        name: robertdebock.core_dependencies
+
+    - name: set hostname as defined in inventory
+      hostname:
+{%raw%}        name: "{{ hostvars[inventory_hostname].inventory_hostname }}"{% endraw %}
+
+    - name: Configure networking
+      import_role:
+        name: MichaelRigart.interfaces
+      tags: network
+
+    - name: Make sure that cron is installed and enabled
+      import_role:
+        name: robertdebock.cron
+
+    - name: Configure NTP time
+      import_role:
+        name: robertdebock.ntp
+
+    - name: configure postfix
+      import_role:
+        name: robertdebock.postfix
+
+    - name: Add EPEL yum repo | RedHat
+      package:
+        name: epel-release
+        state: installed
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install some basic packages
+      package:
+        name:
+          - vim
+          - git
+          - htop
+          - tmux
+
+    - name: Configure the sshd server
+      import_role:
+        name: willshersystems.sshd
+      tags:
+        - ssh_config
+
+    - name: Install and enable fail2ban
+      import_role:
+        name: robertdebock.fail2ban
+      tags: fail2ban
+
+    - name: Create local accounts
+      import_role:
+        name: robertdebock.users
+
+    - name: Create profile file
+      blockinfile:
+        dest: /etc/profile.d/custom_profile.sh
+        create: yes
+        owner: root
+        group: root
+        mode: 0644
+        marker: "# {mark} CREATED WITH ANSIBLE"
+        content: |
+          if [ "$PS1" ]; then
+            PS1="\[\e[31m\]\u\[\e[m\]@\[\e[31m\]\h\[\e[m\]:\w\\$ "
+          fi
+
 
 # vim: tabstop=2 shiftwidth=2

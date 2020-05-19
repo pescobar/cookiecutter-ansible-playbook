@@ -1,0 +1,43 @@
+---
+
+# ansible-galaxy role install -r requirements.yml -p ./roles
+roles:
+
+  - name: robertdebock.bootstrap
+    version: 4.1.7
+
+  - name: robertdebock.core_dependencies
+    version: 1.3.8
+
+  - name: MichaelRigart.interfaces
+    version: v1.4.1
+
+  - name: robertdebock.cron
+    version: 1.3.5
+
+  - name: robertdebock.ntp
+    version: 2.5.4
+
+  - name: robertdebock.postfix
+    version: 3.2.4
+
+  - src: willshersystems.sshd
+    version: v0.8.3
+
+  - name: robertdebock.fail2ban
+    version: 3.0.5
+
+  - name: robertdebock.users
+    version: 4.0.3
+
+  # - name: nvidia.nvidia_driver
+  #   src: https://github.com/pescobar/ansible-role-nvidia-driver.git
+  #   scm: git
+  #   version: add_repos_optional
+
+
+# ansible-galaxy collection install -r requirements.yml -p ./collections
+# collections:
+
+#   - name: theforeman.foreman
+#     version: 0.8.0

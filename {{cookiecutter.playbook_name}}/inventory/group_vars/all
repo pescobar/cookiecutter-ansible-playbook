@@ -1,0 +1,44 @@
+---
+
+# these are the variables which apply to every host in this playbook
+
+ntp_timezone: Europe/Zurich
+ntp_pool:
+  - name: 0.pool.ntp.org
+  - name: 1.pool.ntp.org
+  - name: 2.pool.ntp.org
+  - name: 3.pool.ntp.org
+
+# postfix_relayhost: "[smtp.example.com]"
+
+# sshd:
+#   PasswordAuthentication: no
+#   Protocol: 2
+#   PermitRootLogin: no
+#   PubkeyAuthentication: yes 
+#   PermitEmptyPasswords: no
+#   X11Forwarding: yes 
+#   PermitTunnel: yes 
+#   AllowAgentForwarding: yes 
+#   AllowTcpForwarding: yes 
+#   #AllowUsers: user1 user2
+
+# fail2ban_bantime: 3600 
+# fail2ban_findtime: 600 
+# fail2ban_maxretry: 5
+# fail2ban_destemail: email@example.com
+{% raw %}# fail2ban_sender: root@{{ ansible_fqdn }}{% endraw %}
+
+# fail2ban_jail_configuration:
+#   - section: sshd
+#     option: enabled
+#     value: "true"
+#   - section: DEFAULT
+#     option: ignoreip
+#     value: "127.0.0.1/8 ::1"
+
+# users_user_list:
+#   - name: user1
+#     sudo_options: "ALL=(ALL) NOPASSWD: ALL"
+#     authorized_keys:
+#       - "ssh-ed25519 AAAAC3NzaC1lZDBBBBBBBBBAIHdBAua22OK2jd4OjHrUwd41O35DasuyCzJFGNyE6yfN user@hostname"

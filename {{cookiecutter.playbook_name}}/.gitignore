@@ -5,3 +5,6 @@ __pycache__
 .cache
 *pytestdebug.log
 roles/
+collections/
+vault.pass
+*.rc
