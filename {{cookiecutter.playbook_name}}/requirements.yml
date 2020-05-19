@@ -4,31 +4,31 @@
 roles:
 
   - name: robertdebock.bootstrap
-    version: 4.1.7
+    version: robertdebock/ansible-role-bootstrap
 
   - name: robertdebock.core_dependencies
-    version: 1.3.8
+    version: robertdebock/ansible-role-core_dependencies
 
   - name: MichaelRigart.interfaces
-    version: v1.4.1
+    version: michaelrigart/ansible-role-interfaces
 
   - name: robertdebock.cron
-    version: 1.3.5
+    version: robertdebock/ansible-role-cron
 
   - name: robertdebock.ntp
-    version: 2.5.4
+    version: robertdebock/ansible-role-ntp
 
   - name: robertdebock.postfix
-    version: 3.2.4
+    version: robertdebock/ansible-role-postfix
 
   - src: willshersystems.sshd
-    version: v0.8.3
+    version: willshersystems/ansible-sshd
 
   - name: robertdebock.fail2ban
-    version: 3.0.5
+    version: robertdebock/ansible-role-fail2ban
 
   - name: robertdebock.users
-    version: 4.0.3
+    version: robertdebock/ansible-role-users
 
   # - name: nvidia.nvidia_driver
   #   src: https://github.com/pescobar/ansible-role-nvidia-driver.git
