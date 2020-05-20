@@ -5,7 +5,7 @@
 
 query_latest_github_release () {
 	github_repo=$1
-	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/releases/latest | grep tag_name | awk -F":" {'print $2'} | tr -d \",)
+	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/releases/latest | grep tag_name | awk -F":" {'print $2'} | tr -d " "\",)
 }
 
 for repo in "robertdebock/ansible-role-bootstrap" \
