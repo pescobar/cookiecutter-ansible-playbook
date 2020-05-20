@@ -10,8 +10,8 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 
 * Adds a default inventory with examples
 * Add [.yamllint](https://github.com/adrienverge/yamllint) config file 
-* Add .pre-commit-config.yaml used by [pre-commit](http://pre-commit.com/)
-* Add .gitignore with common files I don't want to track in git
+* Add [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
+* Add [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
 * Add .ansible-lint config
 * Add an up-to-date requirements.yml with common roles I usually use
 * Add and ansible.cfg
