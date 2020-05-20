@@ -8,14 +8,15 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 
 ## What this template provides?
 
-* Adds a default inventory with examples
-* Add [.yamllint](https://github.com/adrienverge/yamllint) config file 
-* Add [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
-* Add [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
-* Add .ansible-lint config
-* Add an up-to-date requirements.yml with common roles I usually use
-* Add and ansible.cfg
-* And probably something else that I forget... :)
+* Static ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts) with examples
+* [.yamllint](https://github.com/adrienverge/yamllint) config file 
+* [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
+* [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
+* [.ansible-lint]({{cookiecutter.playbook_name}}/.ansible-lint) config
+* [ansible.cfg]({{cookiecutter.playbook_name}}/ansible.cfg)
+* [requirements.yml]({{cookiecutter.playbook_name}}/requirements.yml) with common roles I usually use
+
+**This template uses a hook to query latest versions of ansible roles and pre-commit hooks to dynamically generate "requirements.yml" and ".pre-commit-config.yml using latest published versions**
 
 ## Usage
 
