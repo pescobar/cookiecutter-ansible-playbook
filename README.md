@@ -21,19 +21,22 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 ## Usage
 
 ### To initialize a playbook
+
 ```
 $ pip install cookiecutter
 $ cookiecutter gh:pescobar/cookiecutter-ansible-playbook-molecule
 ```
 
 ## Files layout
+
 ```
-ansible-playbook-test/
+ansible-playbook-webserver/
 ├── ansible.cfg
-├── ansible-playbook-test.yml
+├── ansible-playbook-webserver.yml
 ├── inventory
 │   ├── group_vars
 │   │   └── all
+│   ├── hosts
 │   └── host_vars
 │       └── example_host
 ├── README.md
