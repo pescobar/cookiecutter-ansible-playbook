@@ -9,10 +9,10 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 ## What this template provides?
 
 * Static ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts) with examples
-* [.yamllint](https://github.com/adrienverge/yamllint) config file 
+* [.yamllint]({{cookiecutter.playbook_name}}/.yamllint) config file for [yaml linter](/https://github.com/adrienverge/yamllint)
 * [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
 * [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
-* [.ansible-lint]({{cookiecutter.playbook_name}}/.ansible-lint) config
+* [.ansible-lint]({{cookiecutter.playbook_name}}/.ansible-lint) config file for [ansible-lint](https://github.com/ansible/ansible-lint)
 * [ansible.cfg]({{cookiecutter.playbook_name}}/ansible.cfg)
 * [requirements.yml]({{cookiecutter.playbook_name}}/requirements.yml) with common roles I usually use
 
