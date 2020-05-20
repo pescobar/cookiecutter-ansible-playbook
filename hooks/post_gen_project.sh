@@ -16,6 +16,7 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "robertdebock/ansible-role-postfix" \
 	    "willshersystems/ansible-sshd" \
 	    "robertdebock/ansible-role-fail2ban" \
+	    "robertdebock/ansible-role-rsyslog" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"

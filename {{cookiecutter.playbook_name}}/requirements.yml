@@ -30,6 +30,9 @@ roles:
   - name: robertdebock.users
     version: robertdebock/ansible-role-users
 
+  - name: robertdebock.rsyslog
+    version: robertdebock/ansible-role-rsyslog
+
   # - name: nvidia.nvidia_driver
   #   src: https://github.com/pescobar/ansible-role-nvidia-driver.git
   #   scm: git
