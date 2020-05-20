@@ -6,7 +6,7 @@
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: pre-commit-hooks-version
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -14,12 +14,12 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.5.2
+    rev: mirrors-autopep8-version
     hooks:
       - id: autopep8
 
   - repo: https://github.com/ansible/ansible-lint.git
-    rev: v4.2.0
+    rev: ansible-lint-version
     hooks:
       - id: ansible-lint
         files: \.(yaml|yml)$

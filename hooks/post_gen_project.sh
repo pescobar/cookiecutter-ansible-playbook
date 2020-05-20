@@ -21,3 +21,12 @@ do
 	query_latest_github_release "$repo"
 	sed -i -e "s#${repo}#${github_latest_release}#" requirements.yml
 done
+
+query_latest_github_release "pre-commit/pre-commit-hooks"
+sed -i -e "s#pre-commit-hooks-version#${github_latest_release}#" .pre-commit-config.yaml
+
+query_latest_github_release "pre-commit/mirrors-autopep8"
+sed -i -e "s#mirrors-autopep8-version#${github_latest_release}#" .pre-commit-config.yaml
+
+query_latest_github_release "ansible/ansible-lint"
+sed -i -e "s#ansible-lint-version#${github_latest_release}#" .pre-commit-config.yaml
