@@ -16,7 +16,7 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 * [ansible.cfg]({{cookiecutter.playbook_name}}/ansible.cfg)
 * [requirements.yml]({{cookiecutter.playbook_name}}/requirements.yml) with common roles I usually use
 
-**This template uses a hook to query latest versions of ansible roles and pre-commit hooks to dynamically generate "requirements.yml" and ".pre-commit-config.yml using latest published versions**
+**This template uses a [hook](hooks/post_gen_project.sh) to query latest versions of ansible roles and pre-commit repos and dynamically generate "requirements.yml" and ".pre-commit-config.yml using latest published versions**
 
 ## Usage
 
