@@ -48,6 +48,14 @@ ntp_pool:
 #   - section: DEFAULT
 #     option: ignoreip
 #     value: "127.0.0.1/8 ::1"
+#   # options below are required when using geerlingguy.firewall role which uses iptables
+#   - section: DEFAULT
+#     option: banaction
+#     value: iptables-multiport
+#   - section: DEFAULT
+#     option: banaction_allports
+#     value: iptables-allports
+
 
 # users_user_list:
 #   - name: user1
