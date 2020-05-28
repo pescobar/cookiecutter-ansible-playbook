@@ -12,6 +12,9 @@ roles:
   - name: MichaelRigart.interfaces
     version: michaelrigart/ansible-role-interfaces
 
+  - name: geerlingguy.firewall
+    version: geerlingguy/ansible-role-firewall
+
   - name: robertdebock.cron
     version: robertdebock/ansible-role-cron
 
