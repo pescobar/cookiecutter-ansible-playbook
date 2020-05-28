@@ -15,7 +15,7 @@ ntp_pool:
 # firewall_log_dropped_packets: False
 # firewall_disable_firewalld: True
 # firewall_disable_ufw: False
-# firewall_flush_rules_and_chains: False
+# firewall_flush_rules_and_chains: True  # Set this to false if there are other processes managing iptables (e.g. Docker or fail2ban)
 # firewall_enable_ipv6: False
 # firewall_allowed_tcp_ports:
 #   - "22"
