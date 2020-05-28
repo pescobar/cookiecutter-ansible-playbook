@@ -21,7 +21,7 @@ roles:
   - name: robertdebock.postfix
     version: robertdebock/ansible-role-postfix
 
-  - src: willshersystems.sshd
+  - name: willshersystems.sshd
     version: willshersystems/ansible-sshd
 
   - name: robertdebock.fail2ban
