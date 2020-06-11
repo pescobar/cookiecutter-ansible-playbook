@@ -5,12 +5,15 @@
 
 query_latest_github_release () {
 	github_repo=$1
-	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/releases/latest | grep tag_name | awk -F":" {'print $2'} | tr -d " "\",)
+	#github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/releases/latest | grep tag_name | awk -F":" {'print $2'} | tr -d " "\",)
+	# line above fails because some repos don't provide releases when querying the github api so I assume last tag in master is latest release
+	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/tags | grep name | head -1 | awk '{print $2}' |sed -e 's/^"//' -e 's/",//')
 }
 
 for repo in "robertdebock/ansible-role-bootstrap" \
 	    "robertdebock/ansible-role-core_dependencies" \
 	    "michaelrigart/ansible-role-interfaces" \
+	    "geerlingguy/ansible-role-firewall" \
 	    "robertdebock/ansible-role-cron" \
 	    "robertdebock/ansible-role-ntp" \
 	    "robertdebock/ansible-role-postfix" \
