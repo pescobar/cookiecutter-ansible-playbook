@@ -39,15 +39,13 @@ ntp_pool:
 # fail2ban_findtime: 600 
 # fail2ban_maxretry: 5
 # fail2ban_destemail: email@example.com
+# fail2ban_ignoreips: "127.0.0.1/8 ::1 10.1.0.177 192.168.34.23"
 {% raw %}# fail2ban_sender: root@{{ ansible_fqdn }}{% endraw %}
 
 # fail2ban_jail_configuration:
 #   - section: sshd
 #     option: enabled
 #     value: "true"
-#   - section: DEFAULT
-#     option: ignoreip
-#     value: "127.0.0.1/8 ::1"
 #   # options below are required when using geerlingguy.firewall role which uses iptables
 #   - section: DEFAULT
 #     option: banaction
