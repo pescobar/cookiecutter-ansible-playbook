@@ -26,6 +26,14 @@
         name: MichaelRigart.interfaces
       tags: network
 
+    - name: Configure iptables firewall
+      import_role:
+        name: geerlingguy.firewall
+      tags:
+        - network
+        - firewall
+        - iptables
+
     - name: Make sure that cron is installed and enabled
       import_role:
         name: robertdebock.cron
