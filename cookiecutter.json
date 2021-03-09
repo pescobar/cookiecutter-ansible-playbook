@@ -1,5 +1,6 @@
 {
     "playbook_name": "playbook_name",
+    "ansible_user": "root",
     "author": "your name",
     "description": "playbook description",
     "license": ["GPLv3", "GPLv2", "BSD", "MIT", "Apache", "CC-BY"]

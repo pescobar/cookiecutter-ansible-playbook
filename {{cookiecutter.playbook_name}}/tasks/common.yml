@@ -1,0 +1,52 @@
+---
+
+- name: Prepare the machine to be managed with ansible
+  import_role:
+    name: robertdebock.bootstrap
+
+- name: Install core deps
+  import_role:
+    name: robertdebock.core_dependencies
+
+- name: set hostname as defined in inventory
+  hostname:
+{%raw%}    name: "{{ hostvars[inventory_hostname].inventory_hostname }}"{% endraw %}
+
+- name: Configure the network
+  block:
+
+    - name: configure network interfaces
+      import_role:
+        name: MichaelRigart.interfaces
+
+    - meta: flush_handlers
+
+  tags: network
+
+- name: Make sure that cron is installed and enabled
+  import_role:
+    name: robertdebock.cron
+
+- name: Configure NTP time
+  import_role:
+    name: robertdebock.ntp
+
+- name: Add EPEL yum repo | RedHat
+  package:
+    name: epel-release
+    state: installed
+  when: ansible_os_family == 'RedHat'
+
+- name: Install some basic packages
+  package:
+    name:
+      - vim
+      - git
+      - htop
+      - tmux
+
+- name: Create local accounts
+  import_role:
+    name: robertdebock.users
+
+# vim: tabstop=2 shiftwidth=2
