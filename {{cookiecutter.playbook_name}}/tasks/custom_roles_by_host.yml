@@ -12,6 +12,13 @@
   tags:
     - selinux
 
+- name: Configure rsyslog
+  import_role:
+    name: robertdebock.rsyslog
+  when: local_rsyslog | default(false) | bool
+  tags:
+    - rsyslog
+
 - name: Configure iptables firewall
   import_role:
     name: geerlingguy.firewall
