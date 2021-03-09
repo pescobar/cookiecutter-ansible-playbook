@@ -43,13 +43,9 @@
     state: installed
   when: ansible_os_family == 'RedHat'
 
-- name: Install some basic packages
+- name: Install some basic packages defined in variable "local_common_packages_to_install"
   package:
-    name:
-      - vim
-      - git
-      - htop
-      - tmux
+    name: "{{ local_common_packages_to_install[ansible_os_family] }}"
 
 - name: Mount local file systems
   import_role:

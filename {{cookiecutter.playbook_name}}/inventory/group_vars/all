@@ -9,6 +9,20 @@ ntp_pool:
   - name: 2.pool.ntp.org
   - name: 3.pool.ntp.org
 
+local_common_packages_to_install:
+  RedHat:
+    - vim
+    - git
+    - htop
+    - tmux
+    - bash-completion
+  Debian:
+    - vim
+    - git
+    - htop
+    - tmux
+    - bash-completion
+
 # postfix_relayhost: "[smtp.example.com]"
 
 # Using geerlingguy.firewall role, we stick to iptables
