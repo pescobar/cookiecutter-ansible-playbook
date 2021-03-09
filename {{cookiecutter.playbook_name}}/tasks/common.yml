@@ -1,5 +1,5 @@
 ---
-
+{% raw %}
 - name: Prepare the machine to be managed with ansible
   import_role:
     name: robertdebock.bootstrap
@@ -10,7 +10,7 @@
 
 - name: set hostname to {{ inventory_hostname }} as defined in inventory
   hostname:
-{%raw%}    name: "{{ hostvars[inventory_hostname].inventory_hostname }}"{% endraw %}
+    name: "{{ hostvars[inventory_hostname].inventory_hostname }}"
 
 - name: Configure the network
   block:
@@ -62,3 +62,4 @@
     name: robertdebock.users
 
 # vim: tabstop=2 shiftwidth=2
+{% endraw %
