@@ -15,9 +15,10 @@
 - name: Configure the network
   block:
 
-    - name: configure network interfaces
+    - name: configure network interfaces for RedHat family
       import_role:
         name: MichaelRigart.interfaces
+      when: ansible_os_family == 'RedHat'
 
     - meta: flush_handlers
 
