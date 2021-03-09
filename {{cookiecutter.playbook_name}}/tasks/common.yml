@@ -29,10 +29,6 @@
 
   tags: network
 
-- name: Configure and mount extra disk partitions
-  import_role:
-    name: aeriscloud.disk
-
 - name: Make sure that cron is installed and enabled
   import_role:
     name: robertdebock.cron
