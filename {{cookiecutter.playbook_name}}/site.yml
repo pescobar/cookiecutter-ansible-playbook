@@ -38,7 +38,7 @@
           include_tasks: "{{ _pre_custom_tasks_search.stat.path }}"
           when: _pre_custom_tasks_search.stat.exists
 
-    - name: Deploy roles to host. Roles are selected based on variables "local_run_role_XXX"
+    - name: Deploy roles to host. Roles are selected based on variables "local_apply_role_XXX"
       import_tasks: tasks/custom_roles_by_host.yml
 
     # - name: Custom setup for machines in group webservers

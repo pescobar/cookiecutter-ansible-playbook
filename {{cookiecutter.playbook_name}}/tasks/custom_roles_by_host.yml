@@ -7,7 +7,7 @@
   import_role:
     name: pescobar.selinux_disable
   when:
-    - local_run_disable_selinux_role | default(false) | bool
+    - local_apply_role_disable_selinux | default(false) | bool
     - ansible_os_family == 'RedHat'
   tags:
     - selinux
@@ -15,14 +15,14 @@
 - name: Configure rsyslog
   import_role:
     name: robertdebock.rsyslog
-  when: local_run_rsyslog_role | default(false) | bool
+  when: local_apply_role_rsyslog | default(false) | bool
   tags:
     - rsyslog
 
 - name: Configure iptables firewall
   import_role:
     name: geerlingguy.firewall
-  when: local_run_iptables_role | default(false) | bool
+  when: local_apply_role_iptables | default(false) | bool
   tags:
     - network
     - firewall
@@ -31,7 +31,7 @@
 - name: configure postfix
   import_role:
     name: robertdebock.postfix
-  when: local_run_postfix_role | default(false) | bool
+  when: local_apply_role_postfix | default(false) | bool
   tags:
     - postfix
     - mail
@@ -39,7 +39,7 @@
 - name: Configure the sshd server
   import_role:
     name: willshersystems.sshd
-  when: local_run_sshd_role | default(false) | bool
+  when: local_apply_role_sshd | default(false) | bool
   tags:
     - ssh_config
     - ssh
@@ -47,41 +47,41 @@
 - name: Install and enable fail2ban
   import_role:
     name: robertdebock.fail2ban
-  when: local_run_fail2ban_role | default(false) | bool
+  when: local_apply_role_fail2ban | default(false) | bool
   tags: fail2ban
 
 - name: Configure PHP
   import_role:
     name: geerlingguy.php
-  when: local_run_php_role | default(false) | bool
+  when: local_apply_role_php | default(false) | bool
   tags:
     - php
 
 - name: Configure MySQL
   import_role:
     name: geerlingguy.mysql
-  when: local_run_mysql_role | default(false) | bool
+  when: local_apply_role_mysql | default(false) | bool
   tags:
     - mysql
 
 - name: Configure PostgreSQL
   import_role:
     name: geerlingguy.postgresql
-  when: local_run_postgreql_role | default(false) | bool
+  when: local_apply_role_postgreql | default(false) | bool
   tags:
     - postgresql
 
 - name: Configure dehydrated letsencrypt client
   import_role:
     name: pescobar.dehydrated
-  when: local_run_dehydrated_role | default(false) | bool
+  when: local_apply_role_dehydrated | default(false) | bool
   tags:
     - dehydrated
 
 - name: Configure Apache
   import_role:
     name: wcm_io_devops.apache
-  when: local_run_apache_role | default(false) | bool
+  when: local_apply_role_apache | default(false) | bool
   tags:
     - apache
 
