@@ -8,7 +8,7 @@
   import_role:
     name: robertdebock.core_dependencies
 
-- name: set hostname as defined in inventory
+- name: set hostname to {{ inventory_hostname }} as defined in inventory
   hostname:
 {%raw%}    name: "{{ hostvars[inventory_hostname].inventory_hostname }}"{% endraw %}
 
