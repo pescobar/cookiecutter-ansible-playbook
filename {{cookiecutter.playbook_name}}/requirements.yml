@@ -36,11 +36,22 @@ roles:
   - name: robertdebock.rsyslog
     version: robertdebock/ansible-role-rsyslog
 
+  - name: 0x0i.systemd
+    version: 0x0I/ansible-role-systemd
+
+  - name: aeriscloud.disk
+    version: AerisCloud/ansible-disk
+
+  - name: geerlingguy.postgresql
+    version: geerlingguy/ansible-role-postgresql
+
+  - name: ome.nfs_mount
+    version: ome/ansible-role-nfs-mount
+
   # - name: nvidia.nvidia_driver
   #   src: https://github.com/pescobar/ansible-role-nvidia-driver.git
   #   scm: git
   #   version: add_repos_optional
-
 
 # ansible-galaxy collection install -r requirements.yml -p ./collections
 # collections:
