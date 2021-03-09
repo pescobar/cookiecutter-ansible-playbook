@@ -3,6 +3,15 @@
 # ROLES IN THIS FILE WON'T BE EXECUTED BY DEFAULT.
 # ALL THEM DEPEND ON A CONDITIONAL DEFINED BY A "FLOW_VAR" NAMED "LOCAL_XXX"
 
+- name: Disable SElinux
+  import_role:
+    name: pescobar.selinux_disable
+  when:
+    - local_disable_selinux | default(false) | bool
+    - ansible_os_family == 'RedHat'
+  tags:
+    - selinux
+
 - name: Configure iptables firewall
   import_role:
     name: geerlingguy.firewall
