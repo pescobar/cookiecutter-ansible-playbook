@@ -8,9 +8,11 @@
   import_role:
     name: robertdebock.core_dependencies
 
-- name: set hostname to {{ inventory_hostname }} as defined in inventory
+- name: set hostname to "{{ inventory_hostname }}" as defined in inventory
   hostname:
     name: "{{ hostvars[inventory_hostname].inventory_hostname }}"
+  when: "inventory_hostname != 'default'"  # skip in vagrant
+  tags: hostname
 
 - name: Configure the network
   block:
