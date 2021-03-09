@@ -6,7 +6,9 @@
 - name: Configure iptables firewall
   import_role:
     name: geerlingguy.firewall
-  when: local_iptables_firewall
+  when:
+    - local_iptables_firewall is defined
+    - local_iptables_firewall
   tags:
     - network
     - firewall
@@ -15,7 +17,9 @@
 - name: configure postfix
   import_role:
     name: robertdebock.postfix
-  when: local_postfix
+  when:
+    - local_postfix is defined
+    - local_postfix
   tags:
     - postfix
     - mail
@@ -23,7 +27,9 @@
 - name: Configure the sshd server
   import_role:
     name: willshersystems.sshd
-  when: local_sshd
+  when:
+    - local_sshd is defined
+    - local_sshd
   tags:
     - ssh_config
     - ssh
@@ -31,7 +37,9 @@
 - name: Install and enable fail2ban
   import_role:
     name: robertdebock.fail2ban
-  when: local_fail2ban
+  when:
+    - local_fail2ban is defined
+    - local_fail2ban
   tags: fail2ban
 
 # vim: tabstop=2 shiftwidth=2
