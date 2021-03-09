@@ -24,6 +24,7 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "AerisCloud/ansible-disk" \
 	    "geerlingguy/ansible-role-postgresql" \
 	    "ome/ansible-role-nfs-mount" \
+	    "mrlesmithjr/ansible-netplan" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"
