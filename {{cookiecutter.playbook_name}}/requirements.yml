@@ -57,6 +57,9 @@ roles:
   - name: wcm_io_devops.apache
     version: wcm-io-devops/ansible-role-apache
 
+  - name: geerlingguy.php
+    version: geerlingguy/ansible-role-php
+
   - name: pescobar.dehydrated
     version: pescobar/ansible-role-dehydrated
 

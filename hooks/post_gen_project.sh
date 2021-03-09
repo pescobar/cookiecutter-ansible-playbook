@@ -28,6 +28,7 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "pescobar/ansible-role-selinux-disable" \
 	    "wcm-io-devops/ansible-role-apache" \
 	    "pescobar/ansible-role-dehydrated" \
+	    "geerlingguy/ansible-role-php" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"
