@@ -51,6 +51,11 @@
       - htop
       - tmux
 
+- name: Mount NFS shares
+  import_role:
+    name: ome.nfs_mount
+  when: nfs_share_mounts | length > 0
+
 - name: Create local accounts
   import_role:
     name: robertdebock.users
