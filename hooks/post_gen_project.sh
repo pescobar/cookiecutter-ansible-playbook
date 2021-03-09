@@ -26,6 +26,8 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "ome/ansible-role-nfs-mount" \
 	    "mrlesmithjr/ansible-netplan" \
 	    "pescobar/ansible-role-selinux-disable" \
+	    "wcm-io-devops/ansible-role-apache" \
+	    "pescobar/ansible-role-dehydrated" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"

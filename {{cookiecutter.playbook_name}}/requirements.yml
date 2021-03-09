@@ -54,6 +54,12 @@ roles:
   - name: pescobar.selinux_disable
     version: pescobar/ansible-role-selinux-disable
 
+  - name: wcm_io_devops.apache
+    version: wcm-io-devops/ansible-role-apache
+
+  - name: pescobar.dehydrated
+    version: pescobar/ansible-role-dehydrated
+
   # - name: nvidia.nvidia_driver
   #   src: https://github.com/pescobar/ansible-role-nvidia-driver.git
   #   scm: git

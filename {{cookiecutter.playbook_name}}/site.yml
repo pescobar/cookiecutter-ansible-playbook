@@ -32,15 +32,19 @@
           delegate_to: localhost
           become: false
           stat:
-            path: "{{ playbook_dir }}/tasks/pre/{{ inventory_hostname }}_pre.yml"
+            path: "{{ playbook_dir }}/tasks/host_pre/{{ inventory_hostname }}_pre.yml"
           register: _pre_custom_tasks_search
 
         - name: PRE | Import custom tasks for host {{ inventory_hostname }} (if they exists)
           include_tasks: "{{ _pre_custom_tasks_search.stat.path }}"
           when: _pre_custom_tasks_search.stat.exists
 
-    - name: Custom roles by host. Roles here are executed based on "flow vars". These vars are named "local_xxxx"
+    - name: Deploy roles to host. Roles are selected based on variables "local_run_role_XXX"
       import_tasks: tasks/custom_roles_by_host.yml
+
+    # - name: Custom setup for machines in group webservers
+    #   import_tasks: tasks/group/group_webservers.yml
+    #   when: "'webservers' in group_names"
 
     - name: POST | host {{ inventory_hostname }}
       block:
@@ -49,14 +53,11 @@
           delegate_to: localhost
           become: false
           stat:
-            path: "{{ playbook_dir }}/tasks/post/{{ inventory_hostname }}_post.yml"
+            path: "{{ playbook_dir }}/tasks/host_post/{{ inventory_hostname }}_post.yml"
           register: _post_custom_tasks_search
 
         - name: POST | Import custom tasks for host {{ inventory_hostname }} (if they exists)
           include_tasks: "{{ _post_custom_tasks_search.stat.path }}"
           when: _post_custom_tasks_search.stat.exists
 
-    # - name: Custom POST for group gitlab_runner
-    #   import_tasks: tasks/group/group_A_customization.yml
-    #   when: local_gitlab_runner
 {% endraw %}
