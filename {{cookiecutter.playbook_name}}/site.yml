@@ -6,7 +6,6 @@
   remote_user: {{cookiecutter.ansible_user}}
   become: true
 
-
 {% raw %}
   tasks:
 
