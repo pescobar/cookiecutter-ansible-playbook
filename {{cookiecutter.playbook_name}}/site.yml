@@ -1,0 +1,62 @@
+---
+
+- name: {{cookiecutter.playbook_name}}
+  hosts: all
+  gather_facts: true
+  remote_user: {{cookiecutter.ansible_user}}
+  become: true
+
+
+{% raw %}
+  tasks:
+
+    - name: Check if vault file exists in inventory/vault.yml
+      delegate_to: localhost
+      become: false
+      stat:
+        path: "{{ playbook_dir }}/inventory/vault.yml"
+      register: _vault_file_info
+
+    - name: Import inventory/vault.yml if it exists
+      include_vars:
+        file: "{{ playbook_dir }}/inventory/vault.yml"
+      when: _vault_file_info.stat.exists
+
+    - name: Common setup for every machine
+      import_tasks: tasks/common.yml
+
+    - name: PRE CUSTOMIZATION | host {{ inventory_hostname }}
+      block:
+
+        - name: PRE | Check if there is any custom tasks file for host {{ inventory_hostname }}
+          delegate_to: localhost
+          become: false
+          stat:
+            path: "{{ playbook_dir }}/tasks/pre/{{ inventory_hostname }}_pre.yml"
+          register: _pre_custom_tasks_search
+
+        - name: PRE | Import custom tasks for host {{ inventory_hostname }} (if they exists)
+          include_tasks: "{{ _pre_custom_tasks_search.stat.path }}"
+          when: _pre_custom_tasks_search.stat.exists
+
+    - name: Custom roles by host. Roles here are executed based on "flow vars". These vars are named "local_xxxx"
+      import_tasks: tasks/custom_roles_by_host.yml
+
+    - name: POST | host {{ inventory_hostname }}
+      block:
+
+        - name: POST | Check if there is any custom tasks file for host {{ inventory_hostname }}
+          delegate_to: localhost
+          become: false
+          stat:
+            path: "{{ playbook_dir }}/tasks/post/{{ inventory_hostname }}_post.yml"
+          register: _post_custom_tasks_search
+
+        - name: POST | Import custom tasks for host {{ inventory_hostname }} (if they exists)
+          include_tasks: "{{ _post_custom_tasks_search.stat.path }}"
+          when: _post_custom_tasks_search.stat.exists
+
+    # - name: Custom POST for group gitlab_runner
+    #   import_tasks: tasks/group/group_A_customization.yml
+    #   when: local_gitlab_runner
+{% endraw %}

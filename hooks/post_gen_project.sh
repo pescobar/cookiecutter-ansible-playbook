@@ -20,6 +20,10 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "willshersystems/ansible-sshd" \
 	    "robertdebock/ansible-role-fail2ban" \
 	    "robertdebock/ansible-role-rsyslog" \
+	    "0x0I/ansible-role-systemd" \
+	    "AerisCloud/ansible-disk" \
+	    "geerlingguy/ansible-role-postgresql" \
+	    "ome/ansible-role-nfs-mount" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"
