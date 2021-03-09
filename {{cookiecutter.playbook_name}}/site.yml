@@ -16,7 +16,7 @@
         path: "{{ playbook_dir }}/inventory/vault.yml"
       register: _vault_file_info
 
-    - name: Import vault vars if it exists
+    - name: Import inventory/vault.yml if it exists
       include_vars:
         file: "{{ playbook_dir }}/inventory/vault.yml"
       when: _vault_file_info.stat.exists
