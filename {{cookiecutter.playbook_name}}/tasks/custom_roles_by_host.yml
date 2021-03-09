@@ -1,14 +1,12 @@
 ---
 
 # ROLES IN THIS FILE WON'T BE EXECUTED BY DEFAULT.
-# ALL THEM DEPEND ON A CONDITIONAL DEFINED BY "FLOW_VAR" NAMED "LOCAL_XXX"
+# ALL THEM DEPEND ON A CONDITIONAL DEFINED BY A "FLOW_VAR" NAMED "LOCAL_XXX"
 
 - name: Configure iptables firewall
   import_role:
     name: geerlingguy.firewall
-  when:
-    - local_iptables_firewall is defined
-    - local_iptables_firewall
+  when: local_iptables_firewall | default(false)| bool
   tags:
     - network
     - firewall
@@ -17,9 +15,7 @@
 - name: configure postfix
   import_role:
     name: robertdebock.postfix
-  when:
-    - local_postfix is defined
-    - local_postfix
+  when: local_postfix | default(false)| bool
   tags:
     - postfix
     - mail
@@ -27,9 +23,7 @@
 - name: Configure the sshd server
   import_role:
     name: willshersystems.sshd
-  when:
-    - local_sshd is defined
-    - local_sshd
+  when: local_sshd | default(false)| bool
   tags:
     - ssh_config
     - ssh
@@ -37,9 +31,7 @@
 - name: Install and enable fail2ban
   import_role:
     name: robertdebock.fail2ban
-  when:
-    - local_fail2ban is defined
-    - local_fail2ban
+  when: local_fail2ban | default(false)| bool
   tags: fail2ban
 
 # vim: tabstop=2 shiftwidth=2
