@@ -12,6 +12,7 @@
 
     - name: Check if vault file exists in inventory/vault.yml
       delegate_to: localhost
+      become: false
       stat:
         path: "{{ playbook_dir }}/inventory/vault.yml"
       register: _vault_file_info
@@ -29,6 +30,7 @@
 
         - name: PRE | Check if there is any custom tasks file for host {{ inventory_hostname }}
           delegate_to: localhost
+          become: false
           stat:
             path: "{{ playbook_dir }}/tasks/pre/{{ inventory_hostname }}_pre.yml"
           register: _pre_custom_tasks_search
@@ -45,6 +47,7 @@
 
         - name: POST | Check if there is any custom tasks file for host {{ inventory_hostname }}
           delegate_to: localhost
+          become: false
           stat:
             path: "{{ playbook_dir }}/tasks/post/{{ inventory_hostname }}_post.yml"
           register: _post_custom_tasks_search
