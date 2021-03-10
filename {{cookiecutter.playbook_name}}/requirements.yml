@@ -45,6 +45,9 @@ roles:
   - name: geerlingguy.postgresql
     version: geerlingguy/ansible-role-postgresql
 
+  - name: geerlingguy.mysql
+    version: geerlingguy/ansible-role-mysql
+
   - name: ome.nfs_mount
     version: ome/ansible-role-nfs-mount
 
