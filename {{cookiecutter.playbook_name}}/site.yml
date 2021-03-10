@@ -21,20 +21,20 @@
         file: "{{ playbook_dir }}/inventory/vault.yml"
       when: _vault_file_info.stat.exists
 
-    - name: Common setup for every machine
-      import_tasks: tasks/common.yml
+    - name: PRE COMMON | Common setup for every machine
+      import_tasks: tasks/common/pre.yml
 
-    - name: PRE CUSTOMIZATION | host {{ inventory_hostname }}
+    - name: PRE HOST CUSTOMIZATION | host {{ inventory_hostname }}
       block:
 
-        - name: PRE | Check if there is any custom tasks file for host {{ inventory_hostname }}
+        - name: PRE HOST CUSTOMIZATION | Check if there is any custom tasks file for host {{ inventory_hostname }}
           delegate_to: localhost
           become: false
           stat:
             path: "{{ playbook_dir }}/tasks/host_pre/{{ inventory_hostname }}_pre.yml"
           register: _pre_custom_tasks_search
 
-        - name: PRE | Import custom tasks for host {{ inventory_hostname }} (if they exists)
+        - name: PRE HOST CUSTOMIZATION | Import custom tasks for host {{ inventory_hostname }} (if they exists)
           include_tasks: "{{ _pre_custom_tasks_search.stat.path }}"
           when: _pre_custom_tasks_search.stat.exists
 
@@ -45,18 +45,21 @@
     #   import_tasks: tasks/group/group_webservers.yml
     #   when: "'webservers' in group_names"
 
-    - name: POST | host {{ inventory_hostname }}
+    - name: POST HOST CUSTOMIZATION | host {{ inventory_hostname }}
       block:
 
-        - name: POST | Check if there is any custom tasks file for host {{ inventory_hostname }}
+        - name: POST HOST | Check if there is any custom tasks file for host {{ inventory_hostname }}
           delegate_to: localhost
           become: false
           stat:
             path: "{{ playbook_dir }}/tasks/host_post/{{ inventory_hostname }}_post.yml"
           register: _post_custom_tasks_search
 
-        - name: POST | Import custom tasks for host {{ inventory_hostname }} (if they exists)
+        - name: POST HOST | Import custom tasks for host {{ inventory_hostname }} (if they exists)
           include_tasks: "{{ _post_custom_tasks_search.stat.path }}"
           when: _post_custom_tasks_search.stat.exists
+
+    - name: POST COMMON | Common setup for every machine
+      import_tasks: tasks/common/post.yml
 
 {% endraw %}
