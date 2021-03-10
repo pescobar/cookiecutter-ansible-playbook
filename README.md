@@ -78,7 +78,7 @@ For each of the roles you apply to a host you must place the required role varia
 
 ## Testing the playbook with vagrant
 
-* Edit `inventory/hosts.yml` and define the required `local_apply_role_XXX` var for the vagrant group to choose which roles to apply
+* Edit `inventory/hosts.yml` and define the required `local_apply_role_XXX` vars for host `default` in the vagrant group to choose which roles to apply
 * Create file `inventory/group_vars/vagrant` to define the required role vars
 * `vagrant up`
 * `vagrant provision`
