@@ -64,15 +64,15 @@ $> ansible-playbook site.yml --limit compute02
 
 * Execute `tasks/common/pre.yml`
 * Execute `tasks/host_pre/{{ inventory_hostname }}_pre.yml` (if any)
-* Execute `tasks/custom_roles_by_host.yml` . *Roles in this file are selected based on inventory variables `local_apply_role_XXX`*
+* Execute `tasks/custom_roles_by_host.yml` . **Roles in this file are selected based on inventory variables `local_apply_role_XXX`**
 * Execute `tasks/host_post/{{ inventory_hostname }}_post.yml` (if any)
 * Execute `tasks/common/post.yml`
 
 ## Customization of the hosts
 
-Place any custom PRE task in `tasks/host_pre/{{ inventory_hostname }}_pre.yml` . This is executed BEFORE the roles
-You can select which roles apply to the host defining variables `local_apply_role_XXX` in the inventory
-Place any custom POST task in `tasks/host_post/{{ inventory_hostname }}_post.yml` . This is executed AFTER the roles
+* Place any custom PRE task in `tasks/host_pre/{{ inventory_hostname }}_pre.yml` . This is executed BEFORE the roles are deployed.
+* Select which roles apply to each host defining variables `local_apply_role_XXX` in the inventory file [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml).
+* Place any custom POST task in `tasks/host_post/{{ inventory_hostname }}_post.yml` . This is executed AFTER the roles are deployed.
 
 For each of the roles you apply to a host you must place the required role variables in `inventory/host_vars` or `inventory/group_vars`
 
