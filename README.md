@@ -4,7 +4,7 @@ Template to initialize an ansible playbook
 
 ## Requirements
 
-The template itself only needs python and cookicuter. Install it in a virtualenv if needed doing `pip install cookiecutter`
+To initialize the template you need git, curl and cookicuter (pip install cookiecutter)
 
 ## What this template provides?
 
