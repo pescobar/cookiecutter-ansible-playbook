@@ -62,12 +62,12 @@ ansible-playbook-webserver/
 * Depending on which roles you want to deploy to each host, define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
 
 
-### Configure every host in the inventory
+### Apply the playbook to every host in the inventory
 ```
 $> ansible-playbook site.yml
 ```
 
-### Configure a single host or group
+### Apply the playbook to a single host or group
 ```
 $> ansible-playbook site.yml --limit compute02
 ```
