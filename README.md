@@ -8,7 +8,7 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 
 ## What this template provides?
 
-* Static ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts) with examples
+* Static yaml ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts.yml) with examples
 * [.yamllint]({{cookiecutter.playbook_name}}/.yamllint) config file for [yaml linter](https://github.com/adrienverge/yamllint)
 * [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
 * [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
@@ -32,11 +32,11 @@ $ cookiecutter gh:pescobar/cookiecutter-ansible-playbook-molecule
 ```
 ansible-playbook-webserver/
 ├── ansible.cfg
-├── ansible-playbook-webserver.yml
+├── site.yml
 ├── inventory
 │   ├── group_vars
 │   │   └── all
-│   ├── hosts
+│   ├── hosts.yml
 │   └── host_vars
 │       └── example_host
 ├── README.md
