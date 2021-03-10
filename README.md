@@ -25,7 +25,9 @@ The template itself only needs python and cookicuter. Install it in a virtualenv
 
 ```
 $ pip install cookiecutter
-$ cookiecutter gh:pescobar/cookiecutter-ansible-playbook-molecule
+$ cookiecutter https://github.com/pescobar/cookiecutter-ansible-playbook.git
+$ cd playbook_dir/
+$ ansible-galaxy role install -r requirements.yml -p ./roles/
 ```
 
 ## Files layout
