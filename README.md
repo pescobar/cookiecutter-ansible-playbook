@@ -48,7 +48,12 @@ ansible-playbook-webserver/
 
 ## Running the playbook
 
-Once you have configured your inventory and defined the required role variables in `inventory/group_vars` and `inventory/host_vars`:
+### Setting up the inventory and role variables
+
+* Edit [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml) to define your hosts and group and which roles to apply to each of them. You can select which roles are applied using variables `local_apply_role_XXX`
+
+* Depending on which roles you want to deploy to each host, define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
+
 
 ### Configure every host in the inventory
 ```
