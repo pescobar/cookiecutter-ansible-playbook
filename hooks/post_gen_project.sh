@@ -29,6 +29,7 @@ for repo in "robertdebock/ansible-role-bootstrap" \
 	    "wcm-io-devops/ansible-role-apache" \
 	    "pescobar/ansible-role-dehydrated" \
 	    "geerlingguy/ansible-role-php" \
+	    "geerlingguy/ansible-role-mysql" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"
