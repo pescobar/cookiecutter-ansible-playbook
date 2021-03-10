@@ -40,9 +40,8 @@ $ pre-commit install
 ## Files layout
 
 ```
-ansible-playbook-webserver/
+ansible-playbook/
 ├── ansible.cfg
-├── site.yml
 ├── inventory
 │   ├── group_vars
 │   │   └── all
@@ -50,7 +49,18 @@ ansible-playbook-webserver/
 │   └── host_vars
 │       └── example_host
 ├── README.md
-└── requirements.yml
+├── requirements.yml
+├── site.yml
+├── tasks
+│   ├── common
+│   │   ├── post.yml
+│   │   └── pre.yml
+│   ├── custom_roles_by_host.yml
+│   ├── host_post
+│   │   └── README.txt
+│   └── host_pre
+│       └── README.txt
+└── Vagrantfile
 ```
 
 ## Running the playbook
