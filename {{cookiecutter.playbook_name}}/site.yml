@@ -25,18 +25,11 @@
       import_tasks: tasks/common/pre.yml
 
     - name: PRE HOST CUSTOMIZATION | host {{ inventory_hostname }}
-      block:
-
-        - name: PRE HOST CUSTOMIZATION | Check if there is any custom tasks file for host {{ inventory_hostname }}
-          delegate_to: localhost
-          become: false
-          stat:
-            path: "{{ playbook_dir }}/tasks/host_pre/{{ inventory_hostname }}_pre.yml"
-          register: _pre_custom_tasks_search
-
-        - name: PRE HOST CUSTOMIZATION | Import custom tasks for host {{ inventory_hostname }} (if they exists)
-          include_tasks: "{{ _pre_custom_tasks_search.stat.path }}"
-          when: _pre_custom_tasks_search.stat.exists
+      include_tasks: "{{ item }}"
+      with_first_found:
+        - files:
+          - "{{ playbook_dir }}/tasks/host_pre/{{ inventory_hostname }}_pre.yml"
+          skip: true
 
     - name: Deploy roles to host. Roles are selected based on variables "local_apply_role_XXX"
       import_tasks: tasks/custom_roles_by_host.yml
@@ -46,18 +39,11 @@
     #   when: "'webservers' in group_names"
 
     - name: POST HOST CUSTOMIZATION | host {{ inventory_hostname }}
-      block:
-
-        - name: POST HOST | Check if there is any custom tasks file for host {{ inventory_hostname }}
-          delegate_to: localhost
-          become: false
-          stat:
-            path: "{{ playbook_dir }}/tasks/host_post/{{ inventory_hostname }}_post.yml"
-          register: _post_custom_tasks_search
-
-        - name: POST HOST | Import custom tasks for host {{ inventory_hostname }} (if they exists)
-          include_tasks: "{{ _post_custom_tasks_search.stat.path }}"
-          when: _post_custom_tasks_search.stat.exists
+      include_tasks: "{{ item }}"
+      with_first_found:
+        - files:
+          - "{{ playbook_dir }}/tasks/host_post/{{ inventory_hostname }}_post.yml"
+          skip: true
 
     - name: POST COMMON | Common setup for every machine
       import_tasks: tasks/common/post.yml
