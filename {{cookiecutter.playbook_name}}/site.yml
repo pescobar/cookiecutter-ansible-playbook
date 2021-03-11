@@ -18,7 +18,7 @@
           skip: true
 
     - name: PRE COMMON | Common setup for every machine
-      import_tasks: tasks/common/pre.yml
+      import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
 
     - name: PRE HOST CUSTOMIZATION | host {{ inventory_hostname }}
       include_tasks: "{{ item }}"
@@ -28,7 +28,7 @@
           skip: true
 
     - name: Deploy roles to host. Roles are selected based on variables "local_apply_role_XXX"
-      import_tasks: tasks/custom_roles_by_host.yml
+      import_tasks: "{{ playbook_dir }}/tasks/custom_roles_by_host.yml"
 
     # - name: Custom setup for machines in group webservers
     #   import_tasks: tasks/group/group_webservers.yml
@@ -42,6 +42,6 @@
           skip: true
 
     - name: POST COMMON | Common setup for every machine
-      import_tasks: tasks/common/post.yml
+      import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
 
 {% endraw %}
