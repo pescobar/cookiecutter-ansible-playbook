@@ -4,9 +4,5 @@
   import_role:
     name: robertdebock.cron
 
-- name: Create local accounts
-  import_role:
-    name: robertdebock.users
-
 # vim: tabstop=2 shiftwidth=2
 {% endraw %}

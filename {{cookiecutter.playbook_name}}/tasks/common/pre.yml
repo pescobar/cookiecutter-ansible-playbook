@@ -55,6 +55,10 @@
     name: ome.nfs_mount
   when: nfs_share_mounts | length > 0
 
+- name: Create local accounts
+  import_role:
+    name: robertdebock.users
+
 - name: Force all notified handlers to run after initial PRE COMMON tasks
   meta: flush_handlers
 
