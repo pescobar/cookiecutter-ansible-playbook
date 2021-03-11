@@ -55,5 +55,8 @@
     name: ome.nfs_mount
   when: nfs_share_mounts | length > 0
 
+- name: Force all notified handlers to run after initial PRE COMMON tasks
+  meta: flush_handlers
+
 # vim: tabstop=2 shiftwidth=2
 {% endraw %}
