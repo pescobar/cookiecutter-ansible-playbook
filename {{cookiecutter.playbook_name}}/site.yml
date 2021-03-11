@@ -16,9 +16,11 @@
         - files:
           - "{{ playbook_dir }}/inventory/vault.yml"
           skip: true
+      tags: always
 
     - name: PRE COMMON | Common setup for every machine
       import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
+      tags: common
 
     - name: PRE HOST CUSTOMIZATION | host {{ inventory_hostname }}
       include_tasks: "{{ item }}"
@@ -26,6 +28,9 @@
         - files:
           - "{{ playbook_dir }}/tasks/host_pre/{{ inventory_hostname }}_pre.yml"
           skip: true
+      tags:
+        - pre
+        - pre_host
 
     - name: Deploy roles to host. Roles are selected based on variables "local_apply_role_XXX"
       import_tasks: "{{ playbook_dir }}/tasks/custom_roles_by_host.yml"
@@ -40,8 +45,12 @@
         - files:
           - "{{ playbook_dir }}/tasks/host_post/{{ inventory_hostname }}_post.yml"
           skip: true
+      tags:
+        - post
+        - post_host
 
     - name: POST COMMON | Common setup for every machine
       import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
+      tags: common
 
 {% endraw %}
