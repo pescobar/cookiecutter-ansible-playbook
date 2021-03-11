@@ -9,17 +9,13 @@
 {% raw %}
   tasks:
 
-    - name: Check if vault file exists in inventory/vault.yml
-      delegate_to: localhost
-      become: false
-      stat:
-        path: "{{ playbook_dir }}/inventory/vault.yml"
-      register: _vault_file_info
-
-    - name: Import inventory/vault.yml if it exists
+    - name: Import inventory/vault.yml if it exists. This requires a valid vault password
       include_vars:
-        file: "{{ playbook_dir }}/inventory/vault.yml"
-      when: _vault_file_info.stat.exists
+        file: "{{ item }}"
+      with_first_found:
+        - files:
+          - "{{ playbook_dir }}/inventory/vault.yml"
+          skip: true
 
     - name: PRE COMMON | Common setup for every machine
       import_tasks: tasks/common/pre.yml
