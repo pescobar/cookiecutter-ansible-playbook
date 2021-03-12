@@ -66,7 +66,9 @@ ansible-playbook/
 
 * Execute `tasks/common/pre.yml`
 * Execute `tasks/hosts/{{ inventory_hostname }}_pre.yml` (if any)
-* Execute `tasks/groups/{{ group_name }}.yml` (if any)
+* Execute `tasks/groups/group_A.yml` (if defined)
+* Execute `tasks/groups/group_B.yml` (if defined)
+* Execute `tasks/groups/group_C.yml` (if defined)
 * Execute `tasks/hosts/{{ inventory_hostname }}_post.yml` (if any)
 * Execute `tasks/common/post.yml`
 
