@@ -55,7 +55,6 @@ ansible-playbook/
 │   ├── common
 │   │   ├── post.yml
 │   │   └── pre.yml
-│   ├── custom_roles_by_host.yml
 │   ├── groups
 │   │   └── README.txt
 │   └── hosts
