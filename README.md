@@ -80,11 +80,11 @@ ansible-playbook/
 
 * Edit `tasks/common/pre.yml` and `tasks/common/post.yml` with the list of tasks that will apply to every host.
 
-* To do host-level customization add the required tasks to:
+* For host-level customization add the required tasks to:
   * `tasks/hosts/{{ inventory_hostname }}_pre.yml`
   * `tasks/hosts/{{ inventory_hostname }}_post.yml` 
 
-* To do group-level customizations add the required tasks to `tasks/groups/{{ group_name }}.yml` and import them from `site.yml`
+* For group-level customizations add the required tasks to `tasks/groups/{{ group_name }}.yml` and import them from `site.yml`
 
 * Define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
 
