@@ -8,7 +8,7 @@ To initialize the template you need git, curl and cookicuter (pip install cookie
 
 ## What this template provides?
 
-* Ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts.yml) with examples
+* Ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts) with examples
 * [.yamllint]({{cookiecutter.playbook_name}}/.yamllint) config file for [yaml linter](https://github.com/adrienverge/yamllint)
 * [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
 * [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
