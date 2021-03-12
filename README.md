@@ -45,7 +45,7 @@ ansible-playbook/
 ├── inventory
 │   ├── group_vars
 │   │   └── all
-│   ├── hosts.yml
+│   ├── hosts
 │   └── host_vars
 │       └── example_host
 ├── README.md
