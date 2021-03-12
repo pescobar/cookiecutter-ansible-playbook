@@ -35,7 +35,7 @@
 
     # CUSTOM TASKS BY GROUP. ADD BELOW THE REQUIRED TASKS BY GROUP. e.g.
     # - name: Custom setup for machines in group webservers
-    #   import_tasks: tasks/groups/group_webservers.yml
+    #   import_tasks: tasks/groups/webservers.yml
     #   when: "'webservers' in group_names"
 
     - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
