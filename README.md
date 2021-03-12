@@ -55,8 +55,7 @@ ansible-playbook/
 │   ├── common
 │   │   ├── post.yml
 │   │   └── pre.yml
-│   ├── custom_roles_by_host.yml
-│   ├── host_post
+│   ├── hosts
 │   │   └── README.txt
 │   └── host_pre
 │       └── README.txt
@@ -67,10 +66,21 @@ ansible-playbook/
 
 ### Setting up the inventory and role variables
 
-* Edit [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml) to define your hosts and group and which roles to apply to each of them. You can select which roles are applied using variables `local_apply_role_XXX`
+* Edit [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml) to define your hosts and groups.
+
+* Edit `tasks/common/pre.yml` and `tasks/common/post.yml` with the list of tasks that will apply to every host.
+
+* To do host-level customization add the required tasks to:
+  * `tasks/hosts/{{ inventory_hostname }}_pre.yml`
+  * `tasks/hosts/{{ inventory_hostname }}_post.yml` 
+
+* To do group-level customizations add the required tasks to `tasks/groups/{{ group_name }}.yml` and import them from `site.yml`
 
 * Depending on which roles you want to deploy to each host, define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
 
+**Inventory file `inventory/hosts` should only include [behavioral vars](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters)**
+
+**All the role vars should be defined in `inventory/host_vars` or `inventory/group_vars`**
 
 ### Apply the playbook to every host in the inventory
 ```
@@ -85,22 +95,20 @@ $> ansible-playbook site.yml --limit compute02
 ## Workflow of the playbook
 
 * Execute `tasks/common/pre.yml`
-* Execute `tasks/host_pre/{{ inventory_hostname }}_pre.yml` (if any)
-* Execute `tasks/custom_roles_by_host.yml` . **Roles in this file are selected based on inventory variables `local_apply_role_XXX`**
-* Execute `tasks/host_post/{{ inventory_hostname }}_post.yml` (if any)
+* Execute `tasks/hosts/{{ inventory_hostname }}_pre.yml` (if any)
+* Execute `tasks/groups/{{ group_name }}_post.yml` (if any)
+* Execute `tasks/hosts/{{ inventory_hostname }}_post.yml` (if any)
 * Execute `tasks/common/post.yml`
 
-## Customization of the hosts
+## Customization of the hosts and groups
 
-* Place any custom PRE task in `tasks/host_pre/{{ inventory_hostname }}_pre.yml` . This is executed BEFORE the roles are deployed.
-* Select which roles apply to each host defining variables `local_apply_role_XXX` in the inventory file [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml).
-* Place any custom POST task in `tasks/host_post/{{ inventory_hostname }}_post.yml` . This is executed AFTER the roles are deployed.
-
-For each of the roles you apply to a host you must place the required role variables in `inventory/host_vars` or `inventory/group_vars`
+* Place any custom PRE HOST SPECIFIC task in `tasks/hosts/{{ inventory_hostname }}_pre.yml`
+* Place any GROUP SPECIFIC tasksk in `tasks/groups/{{ group_name }}.yml` and import it from `site.yml`
+* Place any custom POST HOST SPECIFIC  task in `tasks/hosts/{{ inventory_hostname }}_post.yml`
 
 ## Testing the playbook with vagrant
 
-* Edit `inventory/hosts.yml` and define the required `local_apply_role_XXX` vars for host `default` in the vagrant group to choose which roles to apply
+* Edit `inventory/hosts` and define the required `local_apply_role_XXX` vars for host `default` in the vagrant group to choose which roles to apply
 * Create file `inventory/group_vars/vagrant` to define the required role vars
 * `vagrant up`
 * `vagrant provision`
