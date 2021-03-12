@@ -32,11 +32,9 @@
         - pre
         - pre_host
 
-    - name: Deploy roles to host. Roles are selected based on variables "local_apply_role_XXX"
-      import_tasks: "{{ playbook_dir }}/tasks/custom_roles_by_host.yml"
-
+    # CUSTOM TASKS BY GROUP. ADD BELOW THE REQUIRED TASKS BY GROUP. e.g.
     # - name: Custom setup for machines in group webservers
-    #   import_tasks: tasks/group/group_webservers.yml
+    #   import_tasks: tasks/groups/group_webservers.yml
     #   when: "'webservers' in group_names"
 
     - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
