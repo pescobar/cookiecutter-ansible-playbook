@@ -1,2 +1,0 @@
-# 192.168.111.222 is the ip defined in the VagrantFile
-default ansible_ssh_host=192.168.111.222 ansible_user=vagrant
