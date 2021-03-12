@@ -20,7 +20,9 @@
 
     - name: PRE | COMMON | Common setup for every machine
       import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
-      tags: common
+      tags:
+        - common
+        - common_pre
 
     - name: PRE | HOST SPECIFIC | host {{ inventory_hostname }}
       include_tasks: "{{ item }}"
@@ -51,6 +53,8 @@
 
     - name: POST COMMON | Common setup for every machine
       import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
-      tags: common
+      tags:
+        - common
+        - common_post
 
 {% endraw %}
