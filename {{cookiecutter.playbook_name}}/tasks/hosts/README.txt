@@ -1,3 +1,4 @@
+{% raw %}
 # HOST specific customization tasks
 
 # Files in this folder should be named: "{{ inventory_hostname }}_pre.yml" or "{ inventory_hostname }}_post.yml" 
@@ -9,3 +10,4 @@
 # tasks/groups/group_B.yml (if any)
 # tasks/hosts/{ inventory_hostname }}_post.yml (if any)
 # tasks/common/post.eyml
+{% endraw %}

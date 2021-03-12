@@ -1,3 +1,4 @@
+{% raw %}
 # GROUP specific customization tasks for groups defined in the inventory
 
 # Files in this folder should be named: "group_name.yml" and are imported from "site.yml" like this:
@@ -12,3 +13,4 @@
 # tasks/groups/group_B.yml (if any)
 # tasks/hosts/{ inventory_hostname }}_post.yml (if any)
 # tasks/common/post.yml
+{% endraw %}
