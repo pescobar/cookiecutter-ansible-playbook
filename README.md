@@ -8,7 +8,7 @@ To initialize the template you need git, curl and cookicuter (pip install cookie
 
 ## What this template provides?
 
-* Static yaml ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts.yml) with examples
+* Ansible [inventory]({{cookiecutter.playbook_name}}/inventory/hosts.yml) with examples
 * [.yamllint]({{cookiecutter.playbook_name}}/.yamllint) config file for [yaml linter](https://github.com/adrienverge/yamllint)
 * [.pre-commit-config.yaml]({{cookiecutter.playbook_name}}/.pre-commit-config.yaml) used by [pre-commit](http://pre-commit.com/)
 * [.gitignore]({{cookiecutter.playbook_name}}/.gitignore) with common files I don't want to track in git
@@ -55,9 +55,10 @@ ansible-playbook/
 │   ├── common
 │   │   ├── post.yml
 │   │   └── pre.yml
-│   ├── hosts
+│   ├── custom_roles_by_host.yml
+│   ├── groups
 │   │   └── README.txt
-│   └── host_pre
+│   └── hosts
 │       └── README.txt
 └── Vagrantfile
 ```
@@ -74,7 +75,7 @@ ansible-playbook/
 
 ### Setting up the inventory and role variables
 
-* Edit [inventory/hosts.yml]({{cookiecutter.playbook_name}}/inventory/hosts.yml) to define your hosts and groups.
+* Edit [inventory/hosts]({{cookiecutter.playbook_name}}/inventory/hosts) to define your hosts and groups.
 
 * Edit `tasks/common/pre.yml` and `tasks/common/post.yml` with the list of tasks that will apply to every host.
 
@@ -109,7 +110,7 @@ $> ansible-playbook site.yml --limit compute02
 
 ## Testing the playbook with vagrant
 
-* Edit `inventory/hosts` and define the required `local_apply_role_XXX` vars for host `default` in the vagrant group to choose which roles to apply
+* Edit `inventory/hosts`
 * Create file `inventory/group_vars/vagrant` to define the required role vars
 * `vagrant up`
 * `vagrant provision`
