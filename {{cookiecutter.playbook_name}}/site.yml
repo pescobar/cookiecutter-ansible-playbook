@@ -31,6 +31,7 @@
       tags:
         - pre
         - pre_host
+        - host_specific
 
     # CUSTOM TASKS BY GROUP. ADD BELOW THE REQUIRED TASKS BY GROUP. e.g.
     # - name: Custom setup for machines in group webservers
@@ -46,6 +47,7 @@
       tags:
         - post
         - post_host
+        - host_specific
 
     - name: POST COMMON | Common setup for every machine
       import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
