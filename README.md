@@ -62,7 +62,15 @@ ansible-playbook/
 └── Vagrantfile
 ```
 
-## Running the playbook
+## Workflow of the playbook
+
+* Execute `tasks/common/pre.yml`
+* Execute `tasks/hosts/{{ inventory_hostname }}_pre.yml` (if any)
+* Execute `tasks/groups/{{ group_name }}.yml` (if any)
+* Execute `tasks/hosts/{{ inventory_hostname }}_post.yml` (if any)
+* Execute `tasks/common/post.yml`
+
+## Executing the playbook
 
 ### Setting up the inventory and role variables
 
@@ -76,7 +84,7 @@ ansible-playbook/
 
 * To do group-level customizations add the required tasks to `tasks/groups/{{ group_name }}.yml` and import them from `site.yml`
 
-* Depending on which roles you want to deploy to each host, define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
+* Define the required **role variables** in folders `inventory/group_vars` and `inventory/host_vars`
 
 **Inventory file `inventory/hosts` should only include [behavioral vars](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters)**
 
@@ -92,13 +100,6 @@ $> ansible-playbook site.yml
 $> ansible-playbook site.yml --limit compute02
 ```
 
-## Workflow of the playbook
-
-* Execute `tasks/common/pre.yml`
-* Execute `tasks/hosts/{{ inventory_hostname }}_pre.yml` (if any)
-* Execute `tasks/groups/{{ group_name }}_post.yml` (if any)
-* Execute `tasks/hosts/{{ inventory_hostname }}_post.yml` (if any)
-* Execute `tasks/common/post.yml`
 
 ## Customization of the hosts and groups
 
