@@ -42,5 +42,5 @@ sed -i -e "s#pre-commit-hooks-version#${github_latest_release}#" .pre-commit-con
 query_latest_github_release "pre-commit/mirrors-autopep8"
 sed -i -e "s#mirrors-autopep8-version#${github_latest_release}#" .pre-commit-config.yaml
 
-query_latest_github_release "ansible/ansible-lint"
+query_latest_github_release "ansible-community/ansible-lint"
 sed -i -e "s#ansible-lint-version#${github_latest_release}#" .pre-commit-config.yaml
