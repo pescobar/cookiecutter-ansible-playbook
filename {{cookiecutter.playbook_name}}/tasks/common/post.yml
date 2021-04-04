@@ -1,7 +1,7 @@
 ---
 {% raw %}
 - name: Configure CRON and the configured cronjobs (if any)
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.cron
 
 # vim: tabstop=2 shiftwidth=2

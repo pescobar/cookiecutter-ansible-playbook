@@ -10,7 +10,7 @@
   tasks:
 
     - name: Import inventory/vault.yml if it exists. This requires a valid vault password
-      include_vars:
+      ansible.builtin.include_vars:
         file: "{{ item }}"
       with_first_found:
         - files:
@@ -19,13 +19,13 @@
       tags: always
 
     - name: PRE | COMMON | Common setup for every machine
-      import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
       tags:
         - common
         - common_pre
 
     - name: PRE | HOST SPECIFIC | host {{ inventory_hostname }}
-      include_tasks: "{{ item }}"
+      ansible.builtin.include_tasks: "{{ item }}"
       with_first_found:
         - files:
           - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_pre.yml"
@@ -37,11 +37,11 @@
 
     # CUSTOM TASKS BY GROUP. ADD BELOW THE REQUIRED TASKS BY GROUP. e.g.
     # - name: Custom setup for machines in group webservers
-    #   import_tasks: tasks/groups/webservers.yml
+    #   ansible.builtin.import_tasks: tasks/groups/webservers.yml
     #   when: "'webservers' in group_names"
 
     - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
-      include_tasks: "{{ item }}"
+      ansible.builtin.include_tasks: "{{ item }}"
       with_first_found:
         - files:
           - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_post.yml"
@@ -52,7 +52,7 @@
         - host_specific
 
     - name: POST COMMON | Common setup for every machine
-      import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/post.yml"
       tags:
         - common
         - common_post

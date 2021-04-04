@@ -1,15 +1,15 @@
 ---
 {% raw %}
 - name: Prepare the machine to be managed with ansible
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.bootstrap
 
 - name: Install core deps
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.core_dependencies
 
 - name: set hostname to "{{ inventory_hostname }}" as defined in inventory
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ hostvars[inventory_hostname].inventory_hostname }}"
   when: "inventory_hostname != 'default'"  # skip in vagrant
   tags: hostname
@@ -18,12 +18,12 @@
   block:
 
     - name: configure network interfaces for RedHat family
-      import_role:
+      ansible.builtin.import_role:
         name: MichaelRigart.interfaces
       when: ansible_os_family == 'RedHat'
 
     - name: Configure network interfaces for Debian family
-      import_role:
+      ansible.builtin.import_role:
         name: mrlesmithjr.netplan
       when: ansible_os_family == 'Debian'
 
@@ -32,35 +32,35 @@
   tags: network
 
 - name: Configure NTP time
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.ntp
 
 - name: Add EPEL yum repo | RedHat
-  package:
+  ansible.builtin.package:
     name: epel-release
     state: installed
   when: ansible_os_family == 'RedHat'
 
 - name: Install some basic packages defined in variable "local_common_packages_to_install"
-  package:
+  ansible.builtin.package:
     name: "{{ local_common_packages_to_install[ansible_os_family] }}"
 
 - name: Mount local file systems
-  import_role:
+  ansible.builtin.import_role:
     name: aeriscloud.disk
   when: disk_additional_disks | length > 0
 
 - name: Mount NFS shares
-  import_role:
+  ansible.builtin.import_role:
     name: ome.nfs_mount
   when: nfs_share_mounts | length > 0
 
 - name: Create local accounts
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.users
 
 - name: Force all notified handlers to run after initial PRE COMMON tasks
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 # vim: tabstop=2 shiftwidth=2
 {% endraw %}
