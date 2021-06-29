@@ -1,5 +1,23 @@
 ---
 
+# ansible-galaxy collection install -r requirements.yml -p ./collections
+collections:
+
+  - name: community.general
+    version: ansible-collections/community.general
+
+  - name: ansible.posix
+    version: ansible-collections/ansible.posix
+
+  - name: ansible.netcommon
+    version: ansible-collections/ansible.netcommon
+
+  - name: community.docker
+    version: ansible-collections/community.docker
+
+  # - name: openstack.cloud
+  #   version: 1.5.0
+
 # ansible-galaxy role install -r requirements.yml -p ./roles
 roles:
 

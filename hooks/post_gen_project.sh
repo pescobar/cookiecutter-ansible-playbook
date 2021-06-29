@@ -28,6 +28,10 @@ for repo in "michaelrigart/ansible-role-interfaces" \
 	    "pescobar/ansible-role-dehydrated" \
 	    "geerlingguy/ansible-role-php" \
 	    "geerlingguy/ansible-role-mysql" \
+	    "ansible-collections/community.general" \
+	    "ansible-collections/ansible.posix" \
+	    "ansible-collections/community.docker" \
+	    "ansible-collections/ansible.netcommon" \
 	    "robertdebock/ansible-role-users";
 do 
 	query_latest_github_release "$repo"
