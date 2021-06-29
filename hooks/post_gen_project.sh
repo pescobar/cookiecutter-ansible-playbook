@@ -10,9 +10,7 @@ query_latest_github_release () {
 	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/tags | grep name | head -1 | awk '{print $2}' |sed -e 's/^"//' -e 's/",//')
 }
 
-for repo in "robertdebock/ansible-role-bootstrap" \
-	    "robertdebock/ansible-role-core_dependencies" \
-	    "michaelrigart/ansible-role-interfaces" \
+for repo in "michaelrigart/ansible-role-interfaces" \
 	    "geerlingguy/ansible-role-firewall" \
 	    "robertdebock/ansible-role-cron" \
 	    "robertdebock/ansible-role-ntp" \

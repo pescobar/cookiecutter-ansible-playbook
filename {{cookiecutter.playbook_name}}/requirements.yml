@@ -3,12 +3,6 @@
 # ansible-galaxy role install -r requirements.yml -p ./roles
 roles:
 
-  - name: robertdebock.bootstrap
-    version: robertdebock/ansible-role-bootstrap
-
-  - name: robertdebock.core_dependencies
-    version: robertdebock/ansible-role-core_dependencies
-
   - name: MichaelRigart.interfaces
     version: michaelrigart/ansible-role-interfaces
 
