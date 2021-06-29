@@ -17,6 +17,7 @@
           - "{{ playbook_dir }}/inventory/vault.yml"
           skip: true
       tags: always
+      no_log: true
 
     - name: PRE | COMMON | Common setup for every machine
       ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
