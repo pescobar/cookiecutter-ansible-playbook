@@ -14,7 +14,7 @@
         file: "{{ item }}"
       with_first_found:
         - files:
-          - "{{ playbook_dir }}/inventory/vault.yml"
+          - "{{ playbook_dir }}/vault.yml"
           skip: true
       tags: always
       no_log: true

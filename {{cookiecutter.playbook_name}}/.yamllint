@@ -17,5 +17,4 @@ ignore: |
   roles
   virtenv
   venv
-  config/vault
-
+  vault.yml
