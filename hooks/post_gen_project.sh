@@ -13,7 +13,7 @@ query_latest_github_release () {
 for repo in "michaelrigart/ansible-role-interfaces" \
 	    "geerlingguy/ansible-role-firewall" \
 	    "robertdebock/ansible-role-cron" \
-	    "robertdebock/ansible-role-ntp" \
+	    "geerlingguy/ansible-role-ntp" \
 	    "robertdebock/ansible-role-postfix" \
 	    "willshersystems/ansible-sshd" \
 	    "robertdebock/ansible-role-fail2ban" \

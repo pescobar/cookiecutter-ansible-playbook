@@ -30,8 +30,8 @@ roles:
   - name: robertdebock.cron
     version: robertdebock/ansible-role-cron
 
-  - name: robertdebock.ntp
-    version: robertdebock/ansible-role-ntp
+  - name: geerlingguy.ntp
+    version: geerlingguy/ansible-role-ntp
 
   - name: robertdebock.postfix
     version: robertdebock/ansible-role-postfix
