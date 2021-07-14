@@ -30,6 +30,7 @@
 - name: Configure NTP time
   ansible.builtin.import_role:
     name: geerlingguy.ntp
+  tags: ntp
 
 - name: Add EPEL yum repo | RedHat
   ansible.builtin.package:
@@ -45,11 +46,13 @@
   ansible.builtin.import_role:
     name: aeriscloud.disk
   when: disk_additional_disks | length > 0
+  tags: local_mounts
 
 - name: Mount NFS shares if defined
   ansible.builtin.import_role:
     name: ome.nfs_mount
   when: nfs_share_mounts | length > 0
+  tags: nfs_mounts
 
 - name: Create local accounts if defined
   ansible.builtin.import_role:
@@ -57,16 +60,19 @@
   when:
     - users_user_list is defined
     - users_user_list | length > 0
+  tags: users_accounts
 
 - name: Configure sshd if sshd config is defined
   ansible.builtin.import_role:
     name: willshersystems.sshd
   when: sshd | length > 0
+  tags: sshd
 
 - name: Configure fail2ban if fail2ban config is defined
   ansible.builtin.import_role:
     name: robertdebock.fail2ban
   when: fail2ban_jail_configuration | length > 0
+  tags: fail2ban
 
 - name: Force all notified handlers to run after initial PRE COMMON tasks
   ansible.builtin.meta: flush_handlers
