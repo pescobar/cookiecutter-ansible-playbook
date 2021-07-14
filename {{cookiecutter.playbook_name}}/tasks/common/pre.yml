@@ -58,6 +58,16 @@
     - users_user_list is defined
     - users_user_list | length > 0
 
+- name: Configure sshd if sshd config is defined
+  ansible.builtin.import_role:
+    name: willshersystems.sshd
+  when: sshd | length > 0
+
+- name: Configure fail2ban if fail2ban config is defined
+  ansible.builtin.import_role:
+    name: robertdebock.fail2ban
+  when: fail2ban_jail_configuration | length > 0
+
 - name: Force all notified handlers to run after initial PRE COMMON tasks
   ansible.builtin.meta: flush_handlers
 
