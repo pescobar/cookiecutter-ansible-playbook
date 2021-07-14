@@ -54,7 +54,9 @@
 - name: Create local accounts
   ansible.builtin.import_role:
     name: robertdebock.users
-  when: users_user_list | length > 0
+  when:
+    - users_user_list is defined
+    - users_user_list | length > 0
 
 - name: Force all notified handlers to run after initial PRE COMMON tasks
   ansible.builtin.meta: flush_handlers
