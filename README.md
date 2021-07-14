@@ -28,6 +28,7 @@ $ pip install cookiecutter
 $ cookiecutter https://github.com/pescobar/cookiecutter-ansible-playbook.git
 $ cd playbook_dir/
 $ ansible-galaxy role install -r requirements.yml -p ./roles/
+$ ansible-galaxy collection install -r requirements.yml -p ./collections
 
 Optional:
 
