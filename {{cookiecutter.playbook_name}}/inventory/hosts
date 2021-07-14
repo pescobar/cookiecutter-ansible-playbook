@@ -1,7 +1,5 @@
 [vagrant]
-vagrant-vm-centos7 ansible_host=192.168.111.222 ansible_user=vagrant
-vagrant-vm-centos8 ansible_host=192.168.111.223 ansible_user=vagrant
-vagrant-vm-ubuntu2004 ansible_host=192.168.111.224 ansible_user=vagrant
+vagrant-vm ansible_host=192.168.111.222 ansible_user=vagrant
 
 # In this inventory we only define "behavioral inventory parameters"
 # https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#connecting-to-hosts-behavioral-inventory-parameters
