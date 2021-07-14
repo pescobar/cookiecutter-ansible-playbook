@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "site.yml"
     ansible.inventory_path = "inventory/"
     ansible.host_key_checking = false
-    ansible.limit = "vagrant-vm-centos7"
+    ansible.limit = "vagrant-vm"
     #ansible.limit = "all"
     #ansible.raw_arguments = ["--list-hosts"]
     #ansible.tags="xnat"
