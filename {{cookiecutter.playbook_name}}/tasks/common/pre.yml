@@ -9,14 +9,14 @@
 - name: Configure the network
   block:
 
-    - name: configure network interfaces for RedHat family
+    - name: configure network interfaces for RedHat family if network config is defined
       ansible.builtin.import_role:
         name: MichaelRigart.interfaces
       when:
         - ansible_os_family == 'RedHat'
         - interfaces_ether_interfaces | length > 0
 
-    - name: Configure network interfaces for Debian family
+    - name: Configure network interfaces for Debian family if network config is defined
       ansible.builtin.import_role:
         name: mrlesmithjr.netplan
       when:
@@ -46,12 +46,12 @@
     name: aeriscloud.disk
   when: disk_additional_disks | length > 0
 
-- name: Mount NFS shares
+- name: Mount NFS shares if defined
   ansible.builtin.import_role:
     name: ome.nfs_mount
   when: nfs_share_mounts | length > 0
 
-- name: Create local accounts
+- name: Create local accounts if defined
   ansible.builtin.import_role:
     name: robertdebock.users
   when:
