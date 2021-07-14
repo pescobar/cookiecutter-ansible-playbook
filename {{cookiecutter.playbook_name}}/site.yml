@@ -36,10 +36,13 @@
         - pre_host
         - host_specific
 
-    # CUSTOM TASKS BY GROUP. ADD BELOW THE REQUIRED TASKS BY GROUP. e.g.
+
+    #  CUSTOM TASKS BY GROUP. IMPORT BELOW THE REQUIRED TASKS BY GROUP. e.g.
+    #
     # - name: Custom setup for machines in group webservers
-    #   ansible.builtin.import_tasks: tasks/groups/webservers.yml
+    #   ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/groups/webservers.yml"
     #   when: "'webservers' in group_names"
+
 
     - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
       ansible.builtin.include_tasks: "{{ item }}"
