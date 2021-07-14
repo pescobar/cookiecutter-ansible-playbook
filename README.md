@@ -112,7 +112,8 @@ $> ansible-playbook site.yml --limit compute02
 
 ## Testing the playbook with vagrant
 
-* Edit `inventory/hosts`
-* Create file `inventory/group_vars/vagrant` to define the required role vars
+* Check definition of vagrant-vm in `inventory/hosts`
+* Edit file `site.yml` and/or `tasks/hosts/vagrant-vm_pre.yml` `tasks/hosts/vagrant-vm_post.yml` to add the tasks to execute in the vagrant-vm
+* Edit file `inventory/host_vars/vagrant-vm` to define the required role vars
 * `vagrant up`
 * `vagrant provision`
