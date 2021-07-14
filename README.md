@@ -115,5 +115,6 @@ $> ansible-playbook site.yml --limit compute02
 * Check definition of vagrant-vm in `inventory/hosts`
 * Edit file `site.yml` and/or `tasks/hosts/vagrant-vm_pre.yml` `tasks/hosts/vagrant-vm_post.yml` to add the tasks to execute in the vagrant-vm
 * Edit file `inventory/host_vars/vagrant-vm` to define the required role vars
+* The default Vagrantfile will use centos7. Replace or symlink the Vagrantfile with the included examples if you want to test on centos8 or ubuntu
 * `vagrant up`
 * `vagrant provision`
