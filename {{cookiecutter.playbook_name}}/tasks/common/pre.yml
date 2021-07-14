@@ -42,7 +42,7 @@
   ansible.builtin.package:
     name: "{{ local_common_packages_to_install[ansible_os_family] }}"
 
-- name: Mount local file systems
+- name: Format and mount local disks if defined
   ansible.builtin.import_role:
     name: aeriscloud.disk
   when: disk_additional_disks | length > 0
