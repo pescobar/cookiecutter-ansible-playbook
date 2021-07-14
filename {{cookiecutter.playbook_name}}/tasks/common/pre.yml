@@ -3,7 +3,7 @@
 - name: set hostname to "{{ inventory_hostname }}" as defined in inventory
   ansible.builtin.hostname:
     name: "{{ hostvars[inventory_hostname].inventory_hostname }}"
-  when: "inventory_hostname != 'default'"  # skip in vagrant
+  when: "inventory_hostname != 'vagrant-vm'"  # skip in vagrant
   tags: hostname
 
 - name: Configure the network
@@ -12,12 +12,16 @@
     - name: configure network interfaces for RedHat family
       ansible.builtin.import_role:
         name: MichaelRigart.interfaces
-      when: ansible_os_family == 'RedHat'
+      when:
+        - ansible_os_family == 'RedHat'
+        - interfaces_ether_interfaces | length > 0
 
     - name: Configure network interfaces for Debian family
       ansible.builtin.import_role:
         name: mrlesmithjr.netplan
-      when: ansible_os_family == 'Debian'
+      when:
+        - ansible_os_family == 'Debian'
+        - netplan_configuration | length > 0
 
     - meta: flush_handlers
 
@@ -50,6 +54,7 @@
 - name: Create local accounts
   ansible.builtin.import_role:
     name: robertdebock.users
+  when: users_user_list | length > 0
 
 - name: Force all notified handlers to run after initial PRE COMMON tasks
   ansible.builtin.meta: flush_handlers
