@@ -23,6 +23,8 @@ local_common_packages_to_install:
     - tmux
     - bash-completion
 
+disk_discover_aws_nvme_ebs: false
+
 # postfix_relayhost: "[smtp.example.com]"
 
 # Using geerlingguy.firewall role, we stick to iptables
