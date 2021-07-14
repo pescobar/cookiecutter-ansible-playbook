@@ -3,7 +3,7 @@
 - name: set hostname to "{{ inventory_hostname }}" as defined in inventory
   ansible.builtin.hostname:
     name: "{{ hostvars[inventory_hostname].inventory_hostname }}"
-  when: "ansible_user_id != 'vagrant'"  # skip in vagrant
+  when: "ansible_user != 'vagrant'"  # skip in vagrant
   tags: hostname
 
 - name: Configure the network
