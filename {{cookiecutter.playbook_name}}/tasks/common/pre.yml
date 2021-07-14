@@ -25,7 +25,7 @@
 
 - name: Configure NTP time
   ansible.builtin.import_role:
-    name: robertdebock.ntp
+    name: geerlingguy.ntp
 
 - name: Add EPEL yum repo | RedHat
   ansible.builtin.package:
