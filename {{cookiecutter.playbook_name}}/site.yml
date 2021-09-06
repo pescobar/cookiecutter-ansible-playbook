@@ -9,7 +9,7 @@
 {% raw %}
   tasks:
 
-    - name: Import inventory/vault.yml if it exists. This requires a valid vault password
+    - name: Import vault.yml if it exists. This requires a valid vault password
       ansible.builtin.include_vars:
         file: "{{ item }}"
       with_first_found:
@@ -18,6 +18,8 @@
           skip: true
       tags: always
       no_log: true
+      delegate_to: localhost
+      become: false
 
     - name: PRE | COMMON | Common setup for every machine
       ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
