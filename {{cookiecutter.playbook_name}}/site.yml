@@ -47,6 +47,7 @@
     # - name: Custom setup for machines in group webservers
     #   ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/groups/webservers.yml"
     #   when: "'webservers' in group_names"
+    #   tags: webservers
 
 
     # We use a block here as workaround so tags are inherited in dynamic includes
