@@ -22,4 +22,4 @@ repos:
     rev: ansible-lint-version
     hooks:
       - id: ansible-lint
-        files: \.(yaml|yml)$
+        args: ['--offline']
