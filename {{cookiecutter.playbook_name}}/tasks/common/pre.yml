@@ -23,7 +23,8 @@
         - ansible_os_family == 'Debian'
         - netplan_configuration | length > 0
 
-    - meta: flush_handlers
+    - name: Flush handlers so network config is applied
+      meta: flush_handlers
 
   tags: network
 
@@ -78,4 +79,4 @@
   ansible.builtin.meta: flush_handlers
 
 # vim: tabstop=2 shiftwidth=2
-{% endraw %}
+{% endraw -%}

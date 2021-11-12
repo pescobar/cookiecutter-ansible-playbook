@@ -5,7 +5,6 @@
   gather_facts: true
   remote_user: {{cookiecutter.ansible_user}}
   become: true
-
 {% raw %}
   tasks:
 
@@ -14,7 +13,7 @@
         file: "{{ item }}"
       with_first_found:
         - files:
-          - "{{ playbook_dir }}/vault.yml"
+          - "{{ playbook_dir }}/vault.yml"  # yamllint disable-line rule:indentation
           skip: true
       tags: always
       no_log: true
@@ -30,12 +29,13 @@
     # We use a block here as workaround so tags are inherited in dynamic includes
     # https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html#tag-inheritance-for-includes-blocks-and-the-apply-keyword
     - block:
-      - name: PRE | HOST SPECIFIC | host {{ inventory_hostname }}
-        ansible.builtin.include_tasks: "{{ item }}"
-        with_first_found:
-          - files:
-            - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_pre.yml"
-            skip: true
+
+        - name: PRE | HOST SPECIFIC | host {{ inventory_hostname }}
+          ansible.builtin.include_tasks: "{{ item }}"
+          with_first_found:
+            - files:
+              - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_pre.yml"  # yamllint disable-line rule:indentation
+              skip: true
       tags:
         - pre
         - pre_host
@@ -53,12 +53,13 @@
     # We use a block here as workaround so tags are inherited in dynamic includes
     # https://docs.ansible.com/ansible/latest/user_guide/playbooks_tags.html#tag-inheritance-for-includes-blocks-and-the-apply-keyword
     - block:
-      - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
-        ansible.builtin.include_tasks: "{{ item }}"
-        with_first_found:
-          - files:
-            - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_post.yml"
-            skip: true
+
+        - name: POST | HOST SPECIFIC | host {{ inventory_hostname }}
+          ansible.builtin.include_tasks: "{{ item }}"
+          with_first_found:
+            - files:
+              - "{{ playbook_dir }}/tasks/hosts/{{ inventory_hostname }}_post.yml"  # yamllint disable-line rule:indentation
+              skip: true
       tags:
         - post
         - post_host
@@ -69,5 +70,4 @@
       tags:
         - common
         - common_post
-
-{% endraw %}
+{% endraw -%}
