@@ -76,3 +76,6 @@ disk_discover_aws_nvme_ebs: false
 #     sudo_options: "ALL=(ALL) NOPASSWD: ALL"
 #     authorized_keys:
 #       - "ssh-ed25519 AAAAC3NzaC1lZDBBBBBBBBBAIHdBAua22OK2jd4OjHrUwd41O35DasuyCzJFGNyE6yfN user@hostname"
+
+# don't manage cron permissions with the users role
+users_cron_allow: no
