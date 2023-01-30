@@ -1,0 +1,13 @@
+---
+
+# Using geerlingguy.firewall role, we stick to iptables
+# firewall_log_dropped_packets: False
+# firewall_disable_firewalld: True
+# firewall_disable_ufw: False
+# firewall_flush_rules_and_chains: True  # Set this to false if there are other processes managing iptables (e.g. Docker or fail2ban)
+# firewall_enable_ipv6: False
+# firewall_allowed_tcp_ports:
+#   - "22"
+# firewall_additional_rules:
+#   - "iptables -A INPUT -s 192.168.10.10 -p tcp -m tcp --dport 22 -j ACCEPT"
+#   - "iptables -A INPUT -s 192.168.10.33/24 -p tcp -m tcp --match multiport --dports 80,443,5000 -j ACCEPT"

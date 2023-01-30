@@ -1,0 +1,13 @@
+---
+
+# sshd:
+#   PasswordAuthentication: no
+#   Protocol: 2
+#   PermitRootLogin: no
+#   PubkeyAuthentication: yes
+#   PermitEmptyPasswords: no
+#   X11Forwarding: yes
+#   PermitTunnel: yes
+#   AllowAgentForwarding: yes
+#   AllowTcpForwarding: yes
+#   #AllowUsers: user1 user2
