@@ -1,0 +1,9 @@
+# config for git-crypt
+# https://github.com/AGWA/git-crypt#using-git-crypt
+# vault.yml filter=git-crypt diff=git-crypt
+# secrets/** filter=git-crypt diff=git-crypt
+
+
+# config for "git diff" with ansible vault
+# https://stackoverflow.com/a/39511274
+# vault.yml diff=ansible-vault merge=binary
