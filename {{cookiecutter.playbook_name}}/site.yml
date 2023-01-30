@@ -70,4 +70,12 @@
       tags:
         - common
         - common_post
+
+
+  handlers:
+
+    - name: Import common handlers
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/handlers.yml"
+      tags: always
+
 {% endraw -%}
