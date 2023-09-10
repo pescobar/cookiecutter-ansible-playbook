@@ -12,7 +12,7 @@
 
     - name: Configure network interfaces for Debian family if network config is defined
       ansible.builtin.import_role:
-        name: mrlesmithjr.netplan
+        name: pescobar.netplan
       when:
         - ansible_os_family == 'Debian'
         - netplan_configuration | length > 0
