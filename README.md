@@ -117,4 +117,4 @@ $> ansible-playbook site.yml --limit compute02
 * Edit file `inventory/host_vars/vagrant-vm` to define the required role vars
 * The default Vagrantfile will use centos7. Replace or symlink the Vagrantfile with the included examples if you want to test on centos8 or ubuntu
 * `vagrant up`
-* `vagrant provision`
+* `ansible-playbook site.yml --limit vagrant-vm`
