@@ -7,14 +7,8 @@
   tags: hostname
 
 - name: Configure the network
+  tags: network
   block:
-
-    - name: configure network interfaces for RedHat family if network config is defined
-      ansible.builtin.import_role:
-        name: MichaelRigart.interfaces
-      when:
-        - ansible_os_family == 'RedHat'
-        - interfaces_ether_interfaces | length > 0
 
     - name: Configure network interfaces for Debian family if network config is defined
       ansible.builtin.import_role:
@@ -26,18 +20,10 @@
     - name: Flush handlers so network config is applied
       meta: flush_handlers
 
-  tags: network
-
 - name: Configure NTP time
   ansible.builtin.import_role:
     name: geerlingguy.ntp
   tags: ntp
-
-- name: Add EPEL yum repo | RedHat
-  ansible.builtin.package:
-    name: epel-release
-    state: installed
-  when: ansible_os_family == 'RedHat'
 
 - name: Install some basic packages defined in variable "local_common_packages_to_install"
   ansible.builtin.package:
