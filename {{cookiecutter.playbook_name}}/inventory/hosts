@@ -9,9 +9,12 @@ vagrant-vm ansible_host=192.168.111.222 ansible_user=vagrant
 # Useful debug commands:
 #
 # print hostvars for host "vagrant-vm":
+# $> ansible-inventory --host vagrant-vm
 # $> ansible -i inventory/ -m debug -a var="hostvars[inventory_hostname]" vagrant-vm
 #
 # print groups for host "vagrant-vm":
+# $> ansible-inventory --list
+# $> ansible-inventory --graph
 # $> ansible -i inventory/ -m debug -a var="hostvars[inventory_hostname]['group_names']" vagrant-vm
 
 
