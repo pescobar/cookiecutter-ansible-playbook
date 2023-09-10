@@ -8,17 +8,27 @@
 {% raw %}
   tasks:
 
-    - name: Import vault.yml if it exists. This requires a valid vault password
+      # folder secrets/ should be encrypted using git-crypt
+    - name: Import encrypted vars defined in folder secrets/
       ansible.builtin.include_vars:
-        file: "{{ item }}"
-      with_first_found:
-        - files:
-          - "{{ playbook_dir }}/vault.yml"  # yamllint disable-line rule:indentation
-          skip: true
+        dir: secrets
+        files_matching: '^(.*).yml$'
       tags: always
       no_log: true
       delegate_to: localhost
       become: false
+
+    # - name: Import vault.yml if it exists. This requires a valid vault password
+    #   ansible.builtin.include_vars:
+    #     file: "{{ item }}"
+    #   with_first_found:
+    #     - files:
+    #       - "{{ playbook_dir }}/vault.yml"  # yamllint disable-line rule:indentation
+    #       skip: true
+    #   tags: always
+    #   no_log: true
+    #   delegate_to: localhost
+    #   become: false
 
     - name: PRE | COMMON | Common setup for every machine
       ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/common/pre.yml"
