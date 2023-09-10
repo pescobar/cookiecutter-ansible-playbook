@@ -21,9 +21,6 @@ collections:
 # ansible-galaxy role install -r requirements.yml -p ./roles
 roles:
 
-  - name: MichaelRigart.interfaces
-    version: michaelrigart/ansible-role-interfaces
-
   - name: geerlingguy.firewall
     version: geerlingguy/ansible-role-firewall
 
@@ -65,9 +62,6 @@ roles:
 
   - name: pescobar.netplan
     version: pescobar/ansible-netplan
-
-  - name: pescobar.selinux_disable
-    version: pescobar/ansible-role-selinux-disable
 
   - name: wcm_io_devops.apache
     version: wcm-io-devops/ansible-role-apache

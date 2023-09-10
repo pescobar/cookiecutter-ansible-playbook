@@ -10,8 +10,7 @@ query_latest_github_release () {
 	github_latest_release=$(curl -s https://api.github.com/repos/${github_repo}/tags | grep name | head -1 | awk '{print $2}' |sed -e 's/^"//' -e 's/",//')
 }
 
-for repo in "michaelrigart/ansible-role-interfaces" \
-	    "geerlingguy/ansible-role-firewall" \
+for repo in "geerlingguy/ansible-role-firewall" \
 	    "robertdebock/ansible-role-cron" \
 	    "geerlingguy/ansible-role-ntp" \
 	    "robertdebock/ansible-role-postfix" \
@@ -23,7 +22,6 @@ for repo in "michaelrigart/ansible-role-interfaces" \
 	    "geerlingguy/ansible-role-postgresql" \
 	    "ome/ansible-role-nfs-mount" \
 	    "pescobar/ansible-netplan" \
-	    "pescobar/ansible-role-selinux-disable" \
 	    "wcm-io-devops/ansible-role-apache" \
 	    "pescobar/ansible-role-dehydrated" \
 	    "geerlingguy/ansible-role-php" \
