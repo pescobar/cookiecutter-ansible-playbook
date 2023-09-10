@@ -22,7 +22,7 @@ for repo in "michaelrigart/ansible-role-interfaces" \
 	    "AerisCloud/ansible-disk" \
 	    "geerlingguy/ansible-role-postgresql" \
 	    "ome/ansible-role-nfs-mount" \
-	    "mrlesmithjr/ansible-netplan" \
+	    "pescobar/ansible-netplan" \
 	    "pescobar/ansible-role-selinux-disable" \
 	    "wcm-io-devops/ansible-role-apache" \
 	    "pescobar/ansible-role-dehydrated" \

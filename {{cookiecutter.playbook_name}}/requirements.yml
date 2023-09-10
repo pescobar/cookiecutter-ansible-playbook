@@ -63,8 +63,8 @@ roles:
   - name: ome.nfs_mount
     version: ome/ansible-role-nfs-mount
 
-  - name: mrlesmithjr.netplan
-    version: mrlesmithjr/ansible-netplan
+  - name: pescobar.netplan
+    version: pescobar/ansible-netplan
 
   - name: pescobar.selinux_disable
     version: pescobar/ansible-role-selinux-disable
