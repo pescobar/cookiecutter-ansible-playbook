@@ -1,0 +1,8 @@
+---
+
+local_common_packages_to_install:
+  - vim
+  - git
+  - htop
+  - tmux
+  - bash-completion

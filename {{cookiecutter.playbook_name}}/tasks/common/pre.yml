@@ -26,8 +26,10 @@
   tags: ntp
 
 - name: Install some basic packages defined in variable "local_common_packages_to_install"
-  ansible.builtin.package:
-    name: "{{ local_common_packages_to_install[ansible_os_family] }}"
+  ansible.builtin.apt:
+    name: "{{ local_common_packages_to_install }}"
+    state: present
+    cache_valid_time: 3600
 
 - name: Format and mount local disks if defined
   ansible.builtin.import_role:
