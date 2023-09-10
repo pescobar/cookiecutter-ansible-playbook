@@ -15,7 +15,7 @@
         name: pescobar.netplan
       when:
         - ansible_os_family == 'Debian'
-        - netplan_configuration | length > 0
+        - netplan_conf | length > 0
 
     - name: Flush handlers so network config is applied
       meta: flush_handlers
